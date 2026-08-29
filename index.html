@@ -252,6 +252,87 @@ body.light { background: #FFFFFF; color: #0B1A2E; transition: background 0.5s, c
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 .light .toast { background: #0B1A2E; color: #FFFFFF; }
 .dark .toast { background: #C9A96E; color: #0B1A2E; }
+
+/* ===== MEGA MENU ===== */
+.mega-menu-panel {
+  position: absolute; top: 100%; right: 50%; transform: translateX(50%) translateY(10px);
+  width: 880px; max-width: 92vw; z-index: 60; border-radius: 20px;
+  opacity: 0; visibility: hidden; transition: all 0.25s ease;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+}
+[dir="ltr"] .mega-menu-panel { right: auto; left: 50%; transform: translateX(-50%) translateY(10px); }
+.mega-menu-trigger:hover .mega-menu-panel,
+.mega-menu-panel:hover { opacity: 1; visibility: visible; transform: translateX(0) translateY(0); }
+[dir="ltr"] .mega-menu-trigger:hover .mega-menu-panel,
+[dir="ltr"] .mega-menu-panel:hover { transform: translateX(0) translateY(0); }
+.light .mega-menu-panel { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.08); }
+.dark .mega-menu-panel { background: #132B4F; border: 1px solid rgba(201,169,110,0.15); }
+.mega-col-title { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+.mega-link { display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 10px; cursor: pointer; transition: all 0.15s ease; font-size: 13px; }
+.mega-link:hover { background: rgba(201,169,110,0.12); }
+
+/* ===== SEARCH ===== */
+.search-suggest {
+  position: absolute; top: 110%; right: 0; left: 0; z-index: 70; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15); max-height: 340px; overflow-y: auto;
+}
+.light .search-suggest { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.08); }
+.dark .search-suggest { background: #132B4F; border: 1px solid rgba(201,169,110,0.15); }
+.suggest-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; cursor: pointer; transition: background 0.15s; }
+.suggest-item:hover { background: rgba(201,169,110,0.12); }
+
+/* ===== FILTERS ===== */
+.filter-group { padding: 16px; border-radius: 16px; }
+.light .filter-group { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.06); }
+.dark .filter-group { background: #132B4F; border: 1px solid rgba(201,169,110,0.12); }
+.filter-option { display: flex; align-items: center; gap: 9px; padding: 7px 4px; cursor: pointer; border-radius: 8px; transition: background 0.15s; }
+.filter-option:hover { background: rgba(201,169,110,0.08); }
+.filter-check { width: 17px; height: 17px; border-radius: 5px; border: 2px solid rgba(11,26,46,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
+.dark .filter-check { border-color: rgba(255,255,255,0.3); }
+.filter-option.checked .filter-check { background: #C9A96E; border-color: #C9A96E; }
+
+/* ===== PRODUCT CARD ===== */
+.pcard { border-radius: 20px; overflow: hidden; transition: all .3s ease; position: relative; }
+.pcard:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(0,0,0,0.1); }
+.light .pcard { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.06); }
+.dark .pcard { background: #132B4F; border: 1px solid rgba(201,169,110,0.12); }
+.wish-btn { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 5; transition: all .2s; cursor: pointer; }
+.light .wish-btn { background: rgba(255,255,255,0.9); color: #9CA3AF; }
+.dark .wish-btn { background: rgba(11,26,46,0.8); color: #94A3B8; }
+.wish-btn.active { color: #D4A5A5; }
+.stars { display: inline-flex; gap: 2px; }
+.stars .on { color: #C9A96E; }
+
+/* ===== PRICE / TIERS ===== */
+.price-was { text-decoration: line-through; opacity: .5; font-size: 11px; }
+.tier-row { display: flex; justify-content: space-between; padding: 7px 12px; border-radius: 10px; font-size: 12px; }
+.tier-row.highlight { background: rgba(168,218,181,0.25); font-weight: 700; }
+.price-save { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 9999px; }
+
+/* ===== ROLE / CURRENCY ===== */
+.account-menu {
+  position: absolute; top: 120%; right: 0; z-index: 70; width: 240px; border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+[dir="ltr"] .account-menu { right: auto; left: 0; }
+.light .account-menu { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.08); }
+.dark .account-menu { background: #132B4F; border: 1px solid rgba(201,169,110,0.15); }
+.role-chip { padding: 8px 16px; border-radius: 9999px; font-size: 12px; font-weight: 700; cursor: pointer; border: 2px solid rgba(201,169,110,0.3); transition: all .2s; color: #C9A96E; }
+.role-chip.active { background: #C9A96E; color: #0B1A2E; }
+
+/* ===== TABS ===== */
+.cat-tab { padding: 10px 18px; border-radius: 9999px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .2s; white-space: nowrap; }
+.cat-tab.active { background: #C9A96E; color: #0B1A2E; }
+.light .cat-tab:not(.active) { background: #F1F5F9; color: #334155; }
+.dark .cat-tab:not(.active) { background: rgba(11,26,46,0.6); color: #CBD5E1; }
+.scroll-x { overflow-x: auto; scrollbar-width: thin; }
+.category-pill { padding: 7px 14px; border-radius: 9999px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all .2s; white-space: nowrap; border: 2px solid rgba(201,169,110,0.25); color: #C9A96E; }
+.category-pill.active { background: #C9A96E; color: #0B1A2E; border-color: #C9A96E; }
+
+/* ===== REVIEWS ===== */
+.review-card { border-radius: 16px; padding: 18px; }
+.light .review-card { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.06); }
+.dark .review-card { background: #132B4F; border: 1px solid rgba(201,169,110,0.12); }
 </style>
 </head>
 
@@ -281,37 +362,132 @@ body.light { background: #FFFFFF; color: #0B1A2E; transition: background 0.5s, c
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center gap-8">
+      <nav class="hidden lg:flex items-center gap-6">
         <a href="#hero" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">الرئيسية</a>
-        <a href="#why-us" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">لماذا نحن</a>
-        <a href="#products" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">المنتجات</a>
-        <a href="#categories" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">التصنيفات</a>
-        <a href="#clinic-tour" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">جولة العيادة</a>
-        <a href="#contact" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">تواصل معنا</a>
-        <!-- EN Nav -->
         <a href="#hero" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Home</a>
-        <a href="#why-us" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Why Us</a>
-        <a href="#products" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Products</a>
+
+        <!-- Mega Menu: Products -->
+        <div class="mega-menu-trigger relative">
+          <button onclick="scrollToCatalog()" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm flex items-center gap-1">المنتجات <iconify-icon icon="ph:caret-down-fill" width="12"></iconify-icon></button>
+          <button onclick="scrollToCatalog()" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm flex items-center gap-1">Products <iconify-icon icon="ph:caret-down-fill" width="12"></iconify-icon></button>
+          <div class="mega-menu-panel p-6">
+            <div class="grid grid-cols-3 gap-5">
+              <div>
+                <div class="mega-col-title ar font-arabic text-gold mb-2">المواد الاستهلاكية</div>
+                <div class="mega-col-title en hidden font-english text-gold mb-2">Consumables</div>
+                <div class="space-y-0.5">
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المواد الاستهلاكية','الكومبوزيت')">الكومبوزيت ومواد الحشو</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المواد الاستهلاكية','مواد التبييض')">مواد التبييض</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المواد الاستهلاكية','مواد العزل')">مواد العزل والحماية</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المواد الاستهلاكية','الأحماض')">الأحماض واللاصقات</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المواد الاستهلاكية','مواد التثبيت')">مواد التثبيت</div>
+                </div>
+                <div class="mega-col-title ar font-arabic text-gold mt-3 mb-2">مستلزمات المعمل</div>
+                <div class="mega-col-title en hidden font-english text-gold mt-3 mb-2">Dental Lab</div>
+                <div class="space-y-0.5">
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('مستلزمات المعمل','')">المواد المخبرية</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('مستلزمات المعمل','')">قوالب وطلاءات</div>
+                </div>
+              </div>
+              <div>
+                <div class="mega-col-title ar font-arabic text-gold mb-2">الأدوات الدقيقة</div>
+                <div class="mega-col-title en hidden font-english text-gold mb-2">Instruments</div>
+                <div class="space-y-0.5">
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('الأدوات الدقيقة','أدوات الحشو')">أدوات الحشو</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('الأدوات الدقيقة','أدوات الجراحة')">أدوات الجراحة</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('الأدوات الدقيقة','حاملات المصفوفات')">حاملات المصفوفات</div>
+                </div>
+                <div class="mega-col-title ar font-arabic text-gold mt-3 mb-2">المعدات</div>
+                <div class="mega-col-title en hidden font-english text-gold mt-3 mb-2">Equipment</div>
+                <div class="space-y-0.5">
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المعدات','أجهزة التعقيم')">أجهزة التعقيم</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المعدات','أجهزة البلمرة')">أجهزة البلمرة</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('المعدات','الخلاطات')">الخلاطات</div>
+                </div>
+              </div>
+              <div>
+                <div class="mega-col-title ar font-arabic text-gold mb-2">التخصصات الطبية</div>
+                <div class="mega-col-title en hidden font-english text-gold mb-2">Specialties</div>
+                <div class="space-y-0.5">
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('التخصصات الطبية','علاج الجذور')">علاج الجذور</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('التخصصات الطبية','تقويم الأسنان')">تقويم الأسنان</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('التخصصات الطبية','زراعة الأسنان')">زراعة الأسنان</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('التخصصات الطبية','التركيبات')">التركيبات</div>
+                  <div class="mega-link ar font-arabic" onclick="filterSpecialty('التخصصات الطبية','جراحة اللثة')">جراحة اللثة</div>
+                </div>
+                <div class="mega-col-title ar font-arabic text-gold mt-3 mb-2">العلامات التجارية</div>
+                <div class="mega-col-title en hidden font-english text-gold mt-3 mb-2">Brands</div>
+                <div class="space-y-0.5">
+                  <div class="mega-link ar font-arabic" onclick="filterBrand('3M')">3M ESPE</div>
+                  <div class="mega-link ar font-arabic" onclick="filterBrand('Dentsply')">Dentsply Sirona</div>
+                  <div class="mega-link ar font-arabic" onclick="filterBrand('GC')">GC Corporation</div>
+                  <div class="mega-link ar font-arabic" onclick="filterBrand('Ivoclar')">Ivoclar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#categories" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">التصنيفات</a>
         <a href="#categories" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Categories</a>
+        <a href="#clinic-tour" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">جولة العيادة</a>
         <a href="#clinic-tour" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Clinic Tour</a>
+        <a href="#contact" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">تواصل معنا</a>
         <a href="#contact" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Contact</a>
       </nav>
+
+      <!-- Search Bar (desktop) -->
+      <div class="hidden md:block flex-1 max-w-xs">
+        <div class="relative">
+          <input id="global-search" oninput="searchSuggest()" type="text" class="w-full pl-9 pr-4 py-2 rounded-full light:bg-ice/60 dark:bg-navy-900/50 border light:border-navy-900/5 dark:border-navy-600/30 text-sm light:text-navy-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold/40 transition-all placeholder:text-navy-900/30 dark:placeholder:text-slate-500" placeholder="ابحث عن منتج، علامة، تخصص...">
+          <iconify-icon icon="ph:magnifying-glass-bold" width="16" class="absolute left-3 top-1/2 -translate-y-1/2 light:text-navy-900/40 dark:text-slate-500"></iconify-icon>
+          <iconify-icon icon="ph:magnifying-glass" width="16" class="absolute right-3 top-1/2 -translate-y-1/2 light:text-navy-900/40 dark:text-slate-500 hidden"></iconify-icon>
+          <div id="search-suggest" class="search-suggest hidden"></div>
+        </div>
+      </div>
 
       <!-- Actions -->
       <div class="flex items-center gap-2 sm:gap-3">
         <!-- Language Toggle -->
-        <button onclick="toggleLang()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors" title="تبديل اللغة">
+        <button onclick="toggleLang()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors" title="تبديل اللغة / Change Language">
           <iconify-icon icon="ph:globe-simple-bold" width="18" class="text-navy-900/70 dark:text-slate-400"></iconify-icon>
         </button>
         <!-- Dark Mode Toggle -->
-        <button onclick="toggleDark()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors" title="الوضع الليلي">
+        <button onclick="toggleDark()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors" title="الوضع الليلي / Dark Mode">
           <iconify-icon icon="ph:sun-dim-bold" width="18" class="text-navy-900/70 dark:text-slate-400 dark:hidden"></iconify-icon>
           <iconify-icon icon="ph:moon-stars-bold" width="18" class="text-slate-400 hidden dark:block"></iconify-icon>
         </button>
+        <!-- Currency Switcher -->
+        <button id="currency-btn" onclick="toggleCurrency()" class="h-9 px-3 rounded-full flex items-center gap-1 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors text-xs font-bold light:text-navy-900/70 dark:text-slate-400" title="تبديل العملة">
+          <iconify-icon icon="ph:currency-circle-dollar" width="16"></iconify-icon>
+          <span id="currency-label">ر.س</span>
+        </button>
+        <!-- Account (multi-role) -->
+        <div class="relative" id="account-wrap">
+          <button onclick="toggleAccountMenu()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors" title="حسابي">
+            <iconify-icon icon="ph:user-circle-fill" width="20" class="text-navy-900/70 dark:text-slate-400"></iconify-icon>
+          </button>
+          <div id="account-menu" class="account-menu hidden">
+            <div class="p-4"><div class="ar font-arabic text-xs font-bold mb-3">متابعة بصفة / Continue as</div>
+              <div class="grid gap-2">
+                <div class="role-chip ar text-center" onclick="setRole('customer')" data-role="customer">عميل (طبيب/عيادة)</div>
+                <div class="role-chip ar text-center" onclick="setRole('institution')" data-role="institution">عميل مؤسسي</div>
+                <div class="role-chip ar text-center" onclick="setRole('vendor')" data-role="vendor">بائع/مورد</div>
+                <div class="role-chip ar text-center" onclick="setRole('guest')" data-role="guest">زائر</div>
+              </div>
+              <button onclick="toggleAccountMenu()" class="mt-4 w-full py-2 rounded-full light:bg-ice dark:bg-navy-700 text-xs font-bold light:text-navy-900/60 dark:text-slate-300">إغلاق</button>
+            </div>
+          </div>
+        </div>
+        <!-- Wishlist -->
+        <button onclick="showWishlist()" class="hidden sm:flex w-9 h-9 rounded-full items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors relative" title="قائمة الأماني">
+          <iconify-icon icon="ph:heart-fill" width="18" class="text-navy-900/70 dark:text-slate-400"></iconify-icon>
+          <span id="wish-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-rosegold rounded-full text-[10px] font-bold text-white flex items-center justify-center hidden">0</span>
+        </button>
         <!-- Cart -->
-        <button class="hidden sm:flex w-9 h-9 rounded-full items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors relative">
+        <button onclick="showCart()" class="hidden sm:flex w-9 h-9 rounded-full items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors relative">
           <iconify-icon icon="ph:shopping-bag-bold" width="18" class="text-navy-900/70 dark:text-slate-400"></iconify-icon>
-          <span class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold rounded-full text-[10px] font-bold text-navy-900 flex items-center justify-center">3</span>
+          <span id="cart-badge" class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold rounded-full text-[10px] font-bold text-navy-900 flex items-center justify-center">0</span>
         </button>
         <!-- Mobile Menu Button -->
         <button onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors">
@@ -947,6 +1123,142 @@ body.light { background: #FFFFFF; color: #0B1A2E; transition: background 0.5s, c
   </div>
 </section>
 
+<!-- ========== PRODUCT CATALOG (3-AXIS) ========== -->
+<section id="catalog" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <span class="reveal inline-block px-4 py-1.5 rounded-full bg-gold/10 dark:bg-gold/15 text-gold text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="ar">الكتالوج الكامل</span>
+        <span class="en hidden">Full Catalog</span>
+      </span>
+      <h2 class="reveal reveal-delay-1 ar font-arabic font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        تصفح <span class="text-gold">وميض البحث</span> الذكي
+      </h2>
+      <h2 class="reveal reveal-delay-1 en hidden font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        Smart <span class="text-gold">Catalog</span>
+      </h2>
+      <p class="reveal reveal-delay-2 ar font-arabic text-navy-900/50 dark:text-slate-400 mt-3 max-w-2xl mx-auto text-sm">نظام تصنيف ثلاثي الأبعاد: التصنيف الرئيسي، النوع، والفلترة المتقدمة. اختر أدوارك للحصول على أسعار مخصصة.</p>
+      <p class="reveal reveal-delay-2 en hidden font-english text-navy-900/50 dark:text-slate-400 mt-3 max-w-2xl mx-auto text-sm">Three-axis classification: main category, product type, and advanced filters. Select your role for personalized pricing.</p>
+
+      <!-- Role selector -->
+      <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-2 mt-6" id="role-selector">
+        <div class="role-chip ar active" onclick="setRole('customer')" data-role="customer">عميل (طبيب)</div>
+        <div class="role-chip en hidden active" onclick="setRole('customer')" data-role="customer">Customer</div>
+        <div class="role-chip ar" onclick="setRole('institution')" data-role="institution">مؤسسة</div>
+        <div class="role-chip en hidden" onclick="setRole('institution')" data-role="institution">Institution</div>
+        <div class="role-chip ar" onclick="setRole('vendor')" data-role="vendor">بائع/مورد</div>
+        <div class="role-chip en hidden" onclick="setRole('vendor')" data-role="vendor">Vendor</div>
+        <div class="role-chip ar" onclick="setRole('guest')" data-role="guest">زائر</div>
+        <div class="role-chip en hidden" onclick="setRole('guest')" data-role="guest">Guest</div>
+      </div>
+    </div>
+
+    <!-- Vertical specialty tabs -->
+    <div class="grid lg:grid-cols-[260px_1fr] gap-6">
+      <!-- Filters sidebar -->
+      <div class="reveal space-y-4">
+        <div class="filter-group">
+          <h4 class="ar font-arabic font-bold text-sm text-navy-900 dark:text-white mb-2">التصنيف الرئيسي</h4>
+          <h4 class="en hidden font-english font-bold text-sm text-navy-900 dark:text-white mb-2">Main Category</h4>
+          <div class="flex flex-wrap gap-2">
+            <div class="category-pill active" data-c="${0}" onclick="setMainCat('all')">الكل</div>
+            <div class="category-pill" onclick="setMainCat('المواد الاستهلاكية')">المواد الاستهلاكية</div>
+            <div class="category-pill" onclick="setMainCat('الأدوات الدقيقة')">الأدوات الدقيقة</div>
+            <div class="category-pill" onclick="setMainCat('المعدات')">المعدات</div>
+            <div class="category-pill" onclick="setMainCat('التخصصات الطبية')">التخصصات</div>
+            <div class="category-pill" onclick="setMainCat('مستلزمات المعمل')">المعمل</div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="ar font-arabic font-bold text-sm text-navy-900 dark:text-white mb-2">العلامة التجارية</h4>
+          <h4 class="en hidden font-english font-bold text-sm text-navy-900 dark:text-white mb-2">Brand</h4>
+          <div id="brand-filters" class="space-y-0.5"></div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="ar font-arabic font-bold text-sm text-navy-900 dark:text-white mb-2">نطاق السعر</h4>
+          <h4 class="en hidden font-english font-bold text-sm text-navy-900 dark:text-white mb-2">Price Range</h4>
+          <div id="price-filters" class="space-y-0.5"></div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="ar font-arabic font-bold text-sm text-navy-900 dark:text-white mb-2">التقييم</h4>
+          <h4 class="en hidden font-english font-bold text-sm text-navy-900 dark:text-white mb-2">Rating</h4>
+          <div id="rating-filters" class="space-y-0.5"></div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="ar font-arabic font-bold text-sm text-navy-900 dark:text-white mb-2">فقط المنتجات المتاحة</h4>
+          <div class="filter-option checked" data-onlystock="1" onclick="toggleStock(this)">
+            <div class="filter-check"></div>
+            <span class="ar font-arabic text-xs">إخفاء المنتجات خارج المخزون</span>
+            <span class="en hidden font-english text-xs">Hide out of stock</span>
+          </div>
+        </div>
+
+        <button onclick="clearFilters()" class="w-full py-2.5 rounded-full light:bg-ice dark:bg-navy-700 ar font-arabic text-xs font-bold light:text-navy-900/60 dark:text-slate-300">إعادة ضبط الفلاتر</button>
+      </div>
+
+      <!-- Product grid + specialty tabs -->
+      <div>
+        <!-- Specialty tabs (cross-axis) -->
+        <div class="reveal scroll-x flex gap-2 mb-5 pb-1" id="specialty-tabs"></div>
+
+        <div class="flex items-center justify-between mb-4">
+          <span class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400" id="result-count"></span>
+          <select id="sort-select" onchange="setSort(this.value)" class="text-xs font-bold rounded-full px-4 py-2 light:bg-white dark:bg-navy-800 border light:border-navy-900/5 dark:border-navy-600/30 light:text-navy-900 dark:text-white">
+            <option value="featured" class="ar">الأكثر تميزاً</option>
+            <option value="price-asc" class="ar">السعر: من الأقل</option>
+            <option value="price-desc" class="ar">السعر: من الأعلى</option>
+            <option value="rating" class="ar">الأعلى تقييماً</option>
+          </select>
+        </div>
+
+        <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+        <div id="no-results" class="hidden text-center py-16">
+          <iconify-icon icon="ph:magnifying-glass" width="48" class="mx-auto text-navy-900/20 dark:text-slate-600"></iconify-icon>
+          <p class="ar font-arabic text-navy-900/50 dark:text-slate-400 mt-3 text-sm">لا توجد منتجات مطابقة. جرب تغيير الفلاتر.</p>
+        </div>
+
+        <!-- Save/Reorder bar -->
+        <div class="mt-8 flex flex-wrap gap-3 justify-center">
+          <button onclick="saveCart()" class="px-5 py-2.5 rounded-full light:bg-white dark:bg-navy-800 border border-gold/40 ar font-arabic text-xs font-bold text-gold">💾 حفظ سلة التسوق</button>
+          <button onclick="reorderLast()" class="px-5 py-2.5 rounded-full light:bg-white dark:bg-navy-800 border border-gold/40 ar font-arabic text-xs font-bold text-gold">🔄 إعادة طلب آخر طلب</button>
+          <button onclick="showWishlist()" class="px-5 py-2.5 rounded-full light:bg-white dark:bg-navy-800 border border-rosegold/40 ar font-arabic text-xs font-bold text-rosegold">❤️ قائمة الأماني (<span id="wish-count-2">0</span>)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== REVIEWS SECTION ========== -->
+<section id="reviews" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="light:bg-ice/30 dark:bg-navy-950/50 absolute inset-0"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-12">
+      <span class="reveal inline-block px-4 py-1.5 rounded-full bg-mint-light/60 dark:bg-mint/10 text-mint-dark dark:text-mint text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="ar">تقييمات الأطباء</span>
+        <span class="en hidden">Doctor Reviews</span>
+      </span>
+      <h2 class="reveal reveal-delay-1 ar font-arabic font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        آراء السريرية <span class="text-gold">الحقيقية</span>
+      </h2>
+      <h2 class="reveal reveal-delay-1 en hidden font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        Real Clinical <span class="text-gold">Reviews</span>
+      </h2>
+      <div class="reveal reveal-delay-2 flex items-center justify-center gap-2 mt-4">
+        <div class="stars"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span></div>
+        <span class="ar font-arabic text-sm font-bold text-navy-900/70 dark:text-slate-300">4.8 / 5</span>
+        <span class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400">— من 1,240+ تقييم</span>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6" id="review-grid"></div>
+  </div>
+</section>
+
 <!-- ========== CONTACT SECTION ========== -->
 <section id="contact" class="py-24 sm:py-32 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1357,29 +1669,34 @@ function toggleDark() {
 }
 
 // ===== LANGUAGE TOGGLE =====
-let currentLang = 'ar';
-function toggleLang() {
+let currentLang = 'en';
+function applyLang() {
   const html = document.documentElement;
   const arElements = document.querySelectorAll('.ar');
   const enElements = document.querySelectorAll('.en');
-  
-  if (currentLang === 'ar') {
-    currentLang = 'en';
+  if (currentLang === 'en') {
     html.setAttribute('lang', 'en');
     html.setAttribute('dir', 'ltr');
     arElements.forEach(el => el.classList.add('hidden'));
     enElements.forEach(el => el.classList.remove('hidden'));
     document.body.style.fontFamily = "'Inter', sans-serif";
-    showToast('English mode enabled 🇬🇧', 'English mode enabled 🇬🇧');
   } else {
-    currentLang = 'ar';
     html.setAttribute('lang', 'ar');
     html.setAttribute('dir', 'rtl');
     arElements.forEach(el => el.classList.remove('hidden'));
     enElements.forEach(el => el.classList.add('hidden'));
     document.body.style.fontFamily = "'Tajawal', 'Inter', sans-serif";
-    showToast('الوضع العربي مفعّل 🇸🇦', 'Arabic mode enabled 🇸🇦');
   }
+  // refresh dynamic content
+  if (document.getElementById('product-grid')) { buildFilters(); buildSpecialtyTabs(); renderReviews(); renderCatalog(); }
+  formatCounters();
+  const cl = document.getElementById('currency-label');
+  if (cl) cl.textContent = CURRENCIES[currentCurr].label;
+}
+function toggleLang() {
+  currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+  applyLang();
+  showToast(currentLang==='en' ? 'English mode enabled 🇬🇧' : 'الوضع العربي مفعّل 🇸🇦', currentLang==='en' ? 'English mode enabled 🇬🇧' : 'Arabic mode enabled 🇸🇦');
 }
 
 // ===== MOBILE MENU =====
@@ -1616,6 +1933,13 @@ revealElements.forEach(el => revealObserver.observe(el));
 
 // ===== COUNTER ANIMATION =====
 const counters = document.querySelectorAll('[data-count]');
+function formatCounters() {
+  counters.forEach(c => {
+    if (typeof c.dataset.final !== 'undefined') {
+      c.textContent = Number(c.dataset.final).toLocaleString(currentLang==='en'?'en-US':'ar-SA') + '+';
+    }
+  });
+}
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1627,8 +1951,9 @@ const counterObserver = new IntersectionObserver((entries) => {
         if (current >= target) {
           current = target;
           clearInterval(timer);
+          entry.target.dataset.final = String(current);
         }
-        entry.target.textContent = Math.floor(current).toLocaleString('ar-SA') + '+';
+        entry.target.textContent = Math.floor(current).toLocaleString(currentLang==='en'?'en-US':'ar-SA') + '+';
       }, 25);
       counterObserver.unobserve(entry.target);
     }
@@ -1650,26 +1975,513 @@ function handleNewsletter(e) {
 }
 
 // ===== PRODUCT ADD TO CART =====
+let cartItems = [];
+function addToCart(id, btn) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p || p.stock < 1) { showToast(currentLang==='ar'?'⚠️ المنتج غير متوفر حالياً':'⚠️ Product out of stock'); return; }
+  cartItems.push(id);
+  updateCartBadge();
+  if (btn) {
+    btn.style.background = '#6BBF7B';
+    btn.style.color = '#0B1A2E';
+    btn.innerHTML = '<iconify-icon icon="ph:check-bold" width="15"></iconify-icon>';
+    setTimeout(() => { btn.style.background = ''; btn.style.color = ''; btn.innerHTML = '<iconify-icon icon="ph:shopping-bag-bold" width="15"></iconify-icon>'; }, 1500);
+  }
+  showToast(currentLang==='ar'?'🛒 تمت إضافة المنتج للسلة!':'🛒 Product added to cart!');
+}
 document.querySelectorAll('.carousel-item button').forEach(btn => {
   btn.addEventListener('click', function() {
-    const cartBadge = document.querySelector('header .absolute.-top-0\\.5');
-    if (cartBadge) {
-      const current = parseInt(cartBadge.textContent);
-      cartBadge.textContent = current + 1;
-    }
-    showToast(currentLang === 'ar' ? '🛒 تمت إضافة المنتج للسلة!' : '🛒 Product added to cart!');
-    this.style.background = '#C9A96E';
-    this.style.color = '#0B1A2E';
-    this.innerHTML = '<iconify-icon icon="ph:check-bold" width="14"></iconify-icon>';
-    setTimeout(() => {
-      this.style.background = '';
-      this.style.color = '';
-      this.innerHTML = '<iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>';
-    }, 1500);
+    addToCart('p1', this);
   });
 });
+function updateCartBadge() {
+  const badge = document.getElementById('cart-badge');
+  if (badge) { badge.textContent = cartItems.length; badge.style.display = 'flex'; }
+}
+function showCart() {
+  let total = 0;
+  const rows = cartItems.map(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    total += getDisplayPrice(p);
+    return `<div class="flex items-center justify-between py-2 border-b light:border-navy-900/5 dark:border-navy-600/30 last:border-0">
+      <span class="ar font-arabic text-xs text-navy-900/80 dark:text-white">${p.nameAr}</span>
+      <span class="en hidden font-english text-xs text-navy-900/80 dark:text-white">${p.nameEn}</span>
+      <span class="font-bold text-xs text-gold">${fmt(getDisplayPrice(p))}</span>
+    </div>`;
+  }).join('');
+  const html = `<div class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-6 shadow-xl max-h-[70vh] overflow-y-auto w-80 max-w-[92vw]">
+    <div class="flex items-center justify-between mb-3"><h4 class="ar font-arabic font-bold text-sm">${UI.cart[0]} (${cartItems.length})</h4>
+    <h4 class="en hidden font-english font-bold text-sm">${UI.cart[1]} (${cartItems.length})</h4>
+    <button onclick="closeModal()" class="w-8 h-8 rounded-full light:bg-ice dark:bg-navy-700 flex items-center justify-center"><iconify-icon icon="ph:x-bold" width="13"></iconify-icon></button></div>
+    ${rows || `<p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 py-4">${UI.cartEmpty[0]}</p><p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 py-4">${UI.cartEmpty[1]}</p>`}
+    <div class="flex items-center justify-between mt-4 pt-3 border-t light:border-navy-900/10 dark:border-navy-600/40">
+      <span class="ar font-arabic text-xs font-bold">${UI.total[0]}</span><span class="en hidden font-english text-xs font-bold">${UI.total[1]}</span>
+      <span class="font-bold text-sm text-gold">${fmt(total)}</span>
+    </div>
+    <button onclick="sendCartToWhatsApp()" class="mt-3 w-full py-3 rounded-full bg-[#25D366] ar font-arabic text-sm font-bold text-white flex items-center justify-center gap-2"><iconify-icon icon="mdi:whatsapp" width="18"></iconify-icon> ${UI.sendWhats[0]}</button>
+    <button onclick="sendCartToWhatsApp()" class="en hidden mt-3 w-full py-3 rounded-full bg-[#25D366] font-english text-sm font-bold text-white flex items-center justify-center gap-2"><iconify-icon icon="mdi:whatsapp" width="18"></iconify-icon> ${UI.sendWhats[1]}</button>
+    <button onclick="checkout()" class="mt-2 w-full py-3 rounded-full bg-gold ar font-arabic text-sm font-bold text-navy-900">${UI.checkout[0]}</button>
+    <button onclick="checkout()" class="en hidden mt-2 w-full py-3 rounded-full bg-gold font-english text-sm font-bold text-navy-900">${UI.checkout[1]}</button>
+  </div>`;
+  openModal(html);
+}
+function buildOrderMessage() {
+  if (!cartItems.length) return '';
+  const en = currentLang === 'en';
+  const lines = cartItems.map(id => {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (!p) return '';
+    return `• ${pname(p)} — ${fmt(getDisplayPrice(p))}`;
+  }).filter(Boolean);
+  let total = cartItems.reduce((s, id) => { const p = PRODUCTS.find(x=>x.id===id); return p ? s + getDisplayPrice(p) : s; }, 0);
+  const roleLine = currentRole !== 'customer' ? `\n(${en?'Ordering as':'الطلب بصفة'}: ${roleName(currentRole, en)})` : '';
+  const header = en ? 'Hello, I would like to order these products from Dental Supplies:' : 'مرحباً، أريد طلب هذه المنتجات من دنتال سبلايز:';
+  const totalLabel = en ? 'Total' : 'الإجمالي';
+  return `${header}\n${lines.join('\n')}\n\n${totalLabel}: ${fmt(total)}${roleLine}`;
+}
+function sendCartToWhatsApp() {
+  if (!cartItems.length) { showToast(currentLang==='ar'?'⚠️ السلة فارغة':'⚠️ Cart is empty'); return; }
+  const msg = encodeURIComponent(buildOrderMessage());
+  window.open('https://wa.me/201554882678?text=' + msg, '_blank');
+  checkoutSaveLast();
+  showToast(currentLang==='ar'?'💬 تم فتح الواتساب لإرسال طلبك':'💬 WhatsApp opened to send your order');
+}
+function checkout() { checkoutSaveLast(); showToast(currentLang==='ar'?'✅ تم استلام طلبك! سيتم التواصل معك':'✅ Order received! We will contact you'); cartItems=[]; updateCartBadge(); closeModal(); }
+
+// ===== STATE / PRICING =====
+let currentRole = 'customer';
+let currentCurr = 'SAR';
+const CURRENCIES = { SAR:{label:'ر.س',rate:1}, EGP:{label:'ج.م',rate:13.5}, USD:{label:'$',rate:0.27}, EUR:{label:'€',rate:0.25} };
+function getDisplayPrice(p) {
+  let base = p.priceSAR;
+  if (currentRole === 'institution') base = p.priceSAR * 0.82;
+  else if (currentRole === 'vendor') base = p.priceSAR * 0.70;
+  return base * (CURRENCIES[currentCurr] ? CURRENCIES[currentCurr].rate : 1);
+}
+function getTierPrice(p) { // wholesale progressive tiers (SAR base)
+  if (currentRole === 'institution') return p.priceSAR * 0.82;
+  if (currentRole === 'vendor') return p.priceSAR * 0.70;
+  return p.wholesalePriceSAR;
+}
+function toggleCurrency() {
+  const keys = Object.keys(CURRENCIES);
+  const i = keys.indexOf(currentCurr);
+  currentCurr = keys[(i+1) % keys.length];
+  const label = document.getElementById('currency-label');
+  if (label) label.textContent = CURRENCIES[currentCurr].label;
+  renderCatalog();
+  showToast(currentLang==='ar' ? '💰 العملة: '+CURRENCIES[currentCurr].label : '💰 Currency: '+CURRENCIES[currentCurr].label);
+}
+function setRole(role, silent) {
+  currentRole = role;
+  document.querySelectorAll('.role-chip').forEach(c => c.classList.toggle('active', c.dataset.role === role || (c.dataset.role===undefined && role==='customer')));
+  renderCatalog();
+  if (!silent) showToast(currentLang==='ar' ? '🎭 تم التبديل إلى: '+roleName(role) : '🎭 Switched to: '+roleName(role, true));
+}
+function roleName(r, en) {
+  const m = { customer:['عميل (طبيب)','Customer'], institution:['عميل مؤسسي','Institution'], vendor:['بائع/مورد','Vendor'], guest:['زائر','Guest'] };
+  return en ? m[r][1] : m[r][0];
+}
+function toggleAccountMenu() { const m=document.getElementById('account-menu'); m.classList.toggle('hidden'); }
+
+// ===== PRODUCT DATA (3-AXIS) =====
+// axis1: main category | axis2: type | specialty: cross-axis
+const PRODUCTS = [
+  { id:'p1', nameAr:'كومبوزيت نانوهيبرد A2', nameEn:'Nanohybrid Composite A2', brand:'3M', main:'المواد الاستهلاكية', type:'الكومبوزيت', specialty:'الحشو والترميم', priceSAR:320, wholesalePriceSAR:230, rating:4.9, reviews:128, stock:42, img:'composite-filling', country:'الولايات المتحدة' },
+  { id:'p2', nameAr:'ملف علاج جذور يدوي', nameEn:'Hand Endodontic Files', brand:'Dentsply', main:'الأدوات الدقيقة', type:'أدوات الحشو', specialty:'علاج الجذور', priceSAR:180, wholesalePriceSAR:130, rating:4.7, reviews:86, stock:60, img:'dental-mirror-pro', country:'ألمانيا' },
+  { id:'p3', nameAr:'جدل النيكل تيتانيوم rotary', nameEn:'NiTi Rotary Files', brand:'Dentsply', main:'الأدوات الدقيقة', type:'أدوات الحشو', specialty:'علاج الجذور', priceSAR:450, wholesalePriceSAR:330, rating:4.8, reviews:74, stock:15, img:'caris-detector', country:'ألمانيا' },
+  { id:'p4', nameAr:'جهاز تعقيم أوتوكلاف 18L', nameEn:'Autoclave Sterilizer 18L', brand:'GC', main:'المعدات', type:'أجهزة التعقيم', specialty:'التعقيم', priceSAR:4800, wholesalePriceSAR:4100, rating:4.8, reviews:52, stock:6, img:'autoclave-sterilizer', country:'ألمانيا' },
+  { id:'p5', nameAr:'جهاز بلمرة LED لاسلكي', nameEn:'Cordless LED Curing Light', brand:'Ivoclar', main:'المعدات', type:'أجهزة البلمرة', specialty:'الحشو والترميم', priceSAR:950, wholesalePriceSAR:800, rating:4.6, reviews:41, stock:20, img:'whitening-device', country:'ليختنشتاين' },
+  { id:'p6', nameAr:'مادة تبييض احترافية 38%', nameEn:'Pro Whitening Gel 38%', brand:'GC', main:'المواد الاستهلاكية', type:'مواد التبييض', specialty:'التجميل والتبييض', priceSAR:260, wholesalePriceSAR:190, rating:4.5, reviews:93, stock:0, img:'whitening-device', country:'اليابان' },
+  { id:'p7', nameAr:'قوالب زراعة تيتانيوم', nameEn:'Titanium Implant Kits', brand:'Ivoclar', main:'الأدوات الدقيقة', type:'أدوات الجراحة', specialty:'زراعة الأسنان', priceSAR:3200, wholesalePriceSAR:2700, rating:4.9, reviews:37, stock:8, img:'drill', country:'سويسرا' },
+  { id:'p8', nameAr:'سلك تقويم نيوتيني', nameEn:'NiTi Orthodontic Wire', brand:'3M', main:'المواد الاستهلاكية', type:'الكومبوزيت', specialty:'تقويم الأسنان', priceSAR:120, wholesalePriceSAR:85, rating:4.4, reviews:66, stock:120, img:'electric-toothbrush-pro', country:'الولايات المتحدة' },
+  { id:'p9', nameAr:'أسمنت تثبيت زجاجي', nameEn:'Glass Ionomer Cement', brand:'GC', main:'المواد الاستهلاكية', type:'مواد التثبيت', specialty:'الحشو والترميم', priceSAR:150, wholesalePriceSAR:110, rating:4.6, reviews:58, stock:90, img:'composite-filling', country:'اليابان' },
+  { id:'p10', nameAr:'ميكروسكوب جراحي متنقل', nameEn:'Portable Surgical Microscope', brand:'Zeiss', main:'المعدات', type:'الخلاطات', specialty:'جراحة اللثة', priceSAR:18500, wholesalePriceSAR:16500, rating:4.9, reviews:12, stock:3, img:'dental-smile-hero', country:'ألمانيا' },
+  { id:'p11', nameAr:'كوفراغ رمل الكوارتز', nameEn:'Quartz Sand Abrasive', brand:'Ivoclar', main:'مستلزمات المعمل', type:'المواد المخبرية', specialty:'التركيبات', priceSAR:95, wholesalePriceSAR:70, rating:4.3, reviews:34, stock:200, img:'caries-detector', country:'سويسرا' },
+  { id:'p12', nameAr:'طلاء سيراميك للتلميع', nameEn:'Ceramic Polishing Kit', brand:'3M', main:'مستلزمات المعمل', type:'قوالب وطلاءات', specialty:'التركيبات', priceSAR:210, wholesalePriceSAR:160, rating:4.5, reviews:47, stock:55, img:'dental-mirror-pro', country:'الولايات المتحدة' },
+  { id:'p13', nameAr:'حمض إيتش جل فوسفوري', nameEn:'Phosphoric Etch Gel', brand:'Dentsply', main:'المواد الاستهلاكية', type:'الأحماض', specialty:'الحشو والترميم', priceSAR:75, wholesalePriceSAR:50, rating:4.2, reviews:102, stock:0, img:'composite-filling', country:'الولايات المتحدة' },
+  { id:'p14', nameAr:'مطرقة ومثقاب عظمي', nameEn:'Bone Mallet & Drill', brand:'Dentsply', main:'الأدوات الدقيقة', type:'أدوات الجراحة', specialty:'زراعة الأسنان', priceSAR:680, wholesalePriceSAR:540, rating:4.7, reviews:23, stock:12, img:'drill', country:'سويسرا' },
+];
+
+// ===== CATALOG STATE =====
+let activeMain = 'all';
+let activeSpecialty = 'all';
+let activeBrands = new Set();
+let activePriceRanges = new Set();
+let activeRating = 0;
+let onlyStock = true;
+let sortMode = 'featured';
+
+const BRANDS = ['3M','Dentsply','GC','Ivoclar','Zeiss'];
+const PRICE_RANGES = [
+  { key:'0-200', labelAr:'أقل من 200', labelEn:'Under 200', min:0, max:200 },
+  { key:'200-500', labelAr:'200 - 500', labelEn:'200 - 500', min:200, max:500 },
+  { key:'500-2000', labelAr:'500 - 2,000', labelEn:'500 - 2,000', min:500, max:2000 },
+  { key:'2000+', labelAr:'أكثر من 2,000', labelEn:'Over 2,000', min:2000, max:Infinity },
+];
+const SPECIALTIES = ['الحشو والترميم','علاج الجذور','تقويم الأسنان','زراعة الأسنان','التعقيم','التجميل والتبييض','التركيبات','جراحة اللثة'];
+
+function fmt(v) { 
+  const rate = CURRENCIES[currentCurr] ? CURRENCIES[currentCurr].rate : 1;
+  const locale = currentLang === 'en' ? 'en-US' : 'ar-EG';
+  return Math.round(v).toLocaleString(locale) + ' ' + CURRENCIES[currentCurr].label;
+}
+function tl(ar, en) { return currentLang === 'en' ? en : ar; }
+function pname(p) { return currentLang === 'en' ? p.nameEn : p.nameAr; }
+const UI = {
+  addToCart: ['أضف للسلة','Add to Cart'],
+  requestQuote: ['📨 اطلب عرض سعر','📨 Request Quote'],
+  outOfStock: ['غير متوفر','Out of stock'],
+  yourPrice: ['سعرك الخاص','Your Price'],
+  retPrice: ['سعر التجزئة','Retail price'],
+  sendWhats: ['أرسل الطلب عبر واتساب','Send order via WhatsApp'],
+  checkout: ['إتمام الطلب','Checkout'],
+  backShopping: ['متابعة التسوق','Continue Shopping'],
+  cart: ['سلة التسوق','Shopping Cart'],
+  cartEmpty: ['السلة فارغة','Cart is empty'],
+  total: ['الإجمالي','Total'],
+  wishlist: ['قائمة الأماني','Wishlist'],
+  wishEmpty: ['قائمة الأماني فارغة','Wishlist is empty'],
+  quoteTitle: ['طلب عرض سعر','Request a Quote'],
+  quoteMsg: ['مخصص خلال 24 ساعة','within 24 hours'],
+  emptyMsg: ['لا توجد منتجات مطابقة. جرب تغيير الفلاتر.','No matching products. Try changing filters.'],
+  item: ['منتج','products'],
+  noResults: ['لا توجد نتائج','No results'],
+  all: ['الكل','All'],
+  mainCategory: ['التصنيف الرئيسي','Main Category'],
+  brand: ['العلامة التجارية','Brand'],
+  priceRange: ['نطاق السعر','Price Range'],
+  rating: ['التقييم','Rating'],
+  ratingUp: ['وأعلى','& up'],
+  onlyStock: ['فقط المنتجات المتاحة','In-stock only'],
+  hideOutStock: ['إخفاء المنتجات خارج المخزون','Hide out of stock'],
+  reset: ['إعادة ضبط الفلاتر','Reset Filters'],
+  bestSellers: ['الأكثر مبيعاً','Best Sellers'],
+  saveCart: ['💾 حفظ سلة التسوق','💾 Save Cart'],
+  reorder: ['🔄 إعادة طلب آخر طلب','🔄 Reorder Last'],
+  currency: ['تبديل العملة','Currency'],
+  reviews: ['تقييمات الأطباء','Doctor Reviews'],
+  followers: ['من','from'],
+  labs: ['مستلزمات المعمل','Dental Lab'],
+  consumables: ['المواد الاستهلاكية','Consumables'],
+  instruments: ['الأدوات الدقيقة','Instruments'],
+  equipment: ['المعدات','Equipment'],
+  specialties: ['التخصصات الطبية','Specialties'],
+  brands: ['العلامات التجارية','Brands'],
+};
+const SPEC_MAP = {
+  'الحشو والترميم':'Restorative',
+  'علاج الجذور':'Endodontics',
+  'تقويم الأسنان':'Orthodontics',
+  'زراعة الأسنان':'Implantology',
+  'التعقيم':'Sterilization',
+  'التجميل والتبييض':'Cosmetic & Whitening',
+  'التركيبات':'Prosthodontics',
+  'جراحة اللثة':'Periodontics',
+};
+const TYPE_MAP = {
+  'الكومبوزيت':'Composite',
+  'أدوات الحشو':'Restorative Instruments',
+  'أدوات الجراحة':'Surgical Instruments',
+  'حاملات المصفوفات':'Matrix Holders',
+  'مواد التبييض':'Whitening Materials',
+  'مواد العزل':'Isolation Materials',
+  'الأحماض':'Acids',
+  'مواد التثبيت':'Cementation',
+  'أجهزة التعقيم':'Sterilizers',
+  'أجهزة البلمرة':'Curing Lights',
+  'الخلاطات':'Mixers',
+  'المواد المخبرية':'Lab Materials',
+  'قوالب وطلاءات':'Molds & Coatings',
+};
+
+function buildFilters() {
+  const bf = document.getElementById('brand-filters');
+  bf.innerHTML = BRANDS.map(b => `
+    <div class="filter-option" data-brand="${b}" onclick="toggleBrand('${b}', this)">
+      <div class="filter-check"></div><span class="font-arabic font-english text-xs">${b}</span>
+    </div>`).join('');
+  const pf = document.getElementById('price-filters');
+  pf.innerHTML = PRICE_RANGES.map(r => `
+    <div class="filter-option" data-price="${r.key}" onclick="togglePrice('${r.key}', this)">
+      <div class="filter-check"></div><span class="ar font-arabic text-xs">${r.labelAr}</span>
+      <span class="en hidden font-english text-xs">${r.labelEn}</span>
+    </div>`).join('');
+  const rf = document.getElementById('rating-filters');
+  rf.innerHTML = [5,4,3].map(s => `
+    <div class="filter-option" data-rating="${s}" onclick="toggleRating(${s}, this)">
+      <div class="filter-check"></div><span class="stars">${starsHtml(s)}</span>
+      <span class="ar font-arabic text-xs">${s} ${tl('وأعلى','')}</span>
+      <span class="en hidden font-english text-xs">${s} & up</span>
+    </div>`).join('');
+}
+function starsHtml(n) {
+  let h = '';
+  for (let i=1;i<=5;i++) h += `<span class="${i<=n?'on':''}">★</span>`;
+  return h;
+}
+
+function buildSpecialtyTabs() {
+  const tabs = document.getElementById('specialty-tabs');
+  tabs.innerHTML = `<div class="cat-tab ar active" onclick="setSpecialty('all', this)">${UI.all[0]}</div>` +
+    `<div class="cat-tab en hidden active" onclick="setSpecialty('all', this)">${UI.all[1]}</div>` +
+    SPECIALTIES.map(s => `<div class="cat-tab ar" onclick="setSpecialty('${s}', this)">${s}</div>` +
+      `<div class="cat-tab en hidden" onclick="setSpecialty('${s}', this)">${SPEC_MAP[s] || s}</div>`).join('');
+}
+function setSpecialty(s, el) {
+  activeSpecialty = s;
+  document.querySelectorAll('#specialty-tabs .cat-tab').forEach(t => t.classList.toggle('active', t===el));
+  renderCatalog();
+}
+function toggleStock(el) {
+  el.classList.toggle('checked');
+  onlyStock = el.classList.contains('checked');
+  renderCatalog();
+}
+function toggleBrand(b, el) {
+  el.classList.toggle('checked');
+  activeBrands.has(b) ? activeBrands.delete(b) : activeBrands.add(b);
+  renderCatalog();
+}
+function togglePrice(k, el) {
+  el.classList.toggle('checked');
+  activePriceRanges.has(k) ? activePriceRanges.delete(k) : activePriceRanges.add(k);
+  renderCatalog();
+}
+function toggleRating(s, el) {
+  activeRating = activeRating === s ? 0 : s;
+  document.querySelectorAll('#rating-filters .filter-option').forEach(o => o.classList.toggle('checked', +o.dataset.rating === activeRating && activeRating>0));
+  renderCatalog();
+}
+function setMainCat(c) {
+  activeMain = c;
+  document.querySelectorAll('.category-pill').forEach(p => p.classList.toggle('active', p.textContent.trim()===(c==='all'?'الكل':c)));
+  renderCatalog();
+}
+function setSort(v) { sortMode = v; renderCatalog(); }
+function clearFilters() {
+  activeMain='all'; activeSpecialty='all'; activeBrands.clear(); activePriceRanges.clear(); activeRating=0; onlyStock=true;
+  document.querySelectorAll('.category-pill').forEach(p=>p.classList.toggle('active',p.textContent.trim()==='الكل'));
+  document.querySelectorAll('.filter-option').forEach(o=>{ if(+o.dataset.rating){o.classList.remove('checked');} else {o.classList.toggle('checked',o.dataset.onlystock!==undefined);} });
+  buildSpecialtyTabs();
+  renderCatalog();
+}
+function filterSpecialty(main, sub) {
+  if (main) { activeMain=main; document.querySelectorAll('.category-pill').forEach(p=>p.classList.toggle('active',p.textContent.trim()===main)); }
+  if (sub) activeSpecialty = sub;
+  document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+  renderCatalog();
+}
+function filterBrand(b) {
+  activeMain='all'; activeBrands = new Set([b]);
+  document.querySelectorAll('.category-pill').forEach(p=>p.classList.toggle('active',p.textContent.trim()==='الكل'));
+  document.querySelectorAll('#brand-filters .filter-option').forEach(o=>o.classList.toggle('checked', o.dataset.brand===b));
+  document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+  renderCatalog();
+}
+
+function getFiltered() {
+  let list = PRODUCTS.slice();
+  if (activeMain !== 'all') list = list.filter(p => p.main === activeMain);
+  if (activeSpecialty !== 'all') list = list.filter(p => p.specialty === activeSpecialty || p.type === activeSpecialty);
+  if (activeBrands.size) list = list.filter(p => activeBrands.has(p.brand));
+  if (activePriceRanges.size) list = list.filter(p => [...activePriceRanges].some(k => { const r = PRICE_RANGES.find(x=>x.key===k); return p.priceSAR>=r.min && p.priceSAR<r.max; }));
+  if (activeRating) list = list.filter(p => p.rating >= activeRating);
+  if (onlyStock) list = list.filter(p => p.stock > 0);
+  if (sortMode==='price-asc') list.sort((a,b)=>a.priceSAR-b.priceSAR);
+  else if (sortMode==='price-desc') list.sort((a,b)=>b.priceSAR-a.priceSAR);
+  else if (sortMode==='rating') list.sort((a,b)=>b.rating-a.rating);
+  else list.sort((a,b)=>b.rating-a.rating);
+  return list;
+}
+
+// ===== WISHLIST =====
+let wishlist = new Set();
+function toggleWish(id, el) {
+  if (wishlist.has(id)) wishlist.delete(id); else wishlist.add(id);
+  updateWishUI();
+  if (el && el.classList) el.classList.toggle('active', wishlist.has(id));
+}
+function updateWishUI() {
+  const c = document.getElementById('wish-count');
+  const c2 = document.getElementById('wish-count-2');
+  if (c) { c.textContent = wishlist.size; c.style.display = wishlist.size ? 'flex' : 'none'; }
+  if (c2) c2.textContent = wishlist.size;
+}
+function showWishlist() {
+  const items = [...wishlist].map(id => PRODUCTS.find(p=>p.id===id)).filter(Boolean);
+  const en = currentLang === 'en';
+  const html = `<div class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-6 shadow-xl max-h-[70vh] overflow-y-auto w-96 max-w-[92vw]">
+    <div class="flex items-center justify-between mb-4"><h4 class="${en?'font-english':'font-arabic'} font-bold text-sm">${en?UI.wishlist[1]:UI.wishlist[0]} (${items.length})</h4>
+    <button onclick="closeModal()" class="w-8 h-8 rounded-full light:bg-ice dark:bg-navy-700 flex items-center justify-center"><iconify-icon icon="ph:x-bold" width="13"></iconify-icon></button></div>
+    ${items.map(p=>`<div class="flex items-center justify-between py-2 border-b light:border-navy-900/5 dark:border-navy-600/30 last:border-0 gap-3">
+      <span class="${en?'font-english':'font-arabic'} text-xs text-navy-900/80 dark:text-white flex-1">${pname(p)}</span>
+      <button onclick="addToCart('${p.id}');closeModal()" class="w-8 h-8 rounded-full bg-gold/15 text-gold flex items-center justify-center"><iconify-icon icon="ph:shopping-bag-bold" width="14"></iconify-icon></button>
+      <button onclick="toggleWish('${p.id}');showWishlist()" class="w-8 h-8 rounded-full light:bg-rosegold/10 dark:bg-rosegold/10 text-rosegold flex items-center justify-center"><iconify-icon icon="ph:x-bold" width="13"></iconify-icon></button>
+    </div>`).join('') || `<p class="${en?'font-english':'font-arabic'} text-xs text-navy-900/50 dark:text-slate-400 py-4">${en?UI.wishEmpty[1]:UI.wishEmpty[0]}</p>`}
+    <button onclick="closeModal()" class="mt-4 w-full py-3 rounded-full bg-gold ${en?'font-english':'font-arabic'} text-sm font-bold text-navy-900">${en?UI.backShopping[1]:UI.backShopping[0]}</button>
+  </div>`;
+  openModal(html);
+}
+
+// ===== MODAL =====
+function openModal(content) {
+  let m = document.getElementById('app-modal');
+  if (!m) { m=document.createElement('div'); m.id='app-modal'; document.body.appendChild(m); }
+  m.innerHTML = `<div class="fixed inset-0 z-[200] flex items-center justify-center p-4" style="background:rgba(11,26,46,0.5);backdrop-filter:blur(4px)" onclick="if(event.target===this)closeModal()">${content}</div>`;
+}
+function closeModal() { const m=document.getElementById('app-modal'); if(m) m.remove(); }
+
+// ===== RFQ =====
+function requestQuote(id, el) {
+  const p = PRODUCTS.find(x=>x.id===id);
+  const en = currentLang === 'en';
+  const html = `<div class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-6 shadow-xl w-96 max-w-[92vw]">
+    <div class="flex items-center justify-between mb-4"><h4 class="${en?'font-english':'font-arabic'} font-bold text-sm">${en?UI.quoteTitle[1]:UI.quoteTitle[0]} - ${pname(p)}</h4>
+    <button onclick="closeModal()" class="w-8 h-8 rounded-full light:bg-ice dark:bg-navy-700 flex items-center justify-center"><iconify-icon icon="ph:x-bold" width="13"></iconify-icon></button></div>
+    <div class="${en?'font-english':'font-arabic'} text-xs text-navy-900/50 dark:text-slate-400 mb-4 leading-relaxed">${en?UI.retPrice[1]:UI.retPrice[0]}: <span class="font-bold text-gold">${fmt(p.priceSAR*CURRENCIES[currentCurr].rate)}</span>. ${en?UI.quoteMsg[1]:UI.quoteMsg[0]}.</div>
+    <input id="rfq-qty" type="number" min="1" value="10" class="w-full mb-3 px-4 py-3 rounded-2xl light:bg-ice/60 dark:bg-navy-900/50 border light:border-navy-900/5 dark:border-navy-600/30 ${en?'font-english':'font-arabic'} text-sm focus:outline-none focus:ring-2 focus:ring-gold/50">
+    <button onclick="submitQuote('${p.id}')" class="w-full py-3 rounded-full bg-gold ${en?'font-english':'font-arabic'} text-sm font-bold text-navy-900">${en?'Send Quote Request':'إرسال طلب السعر'}</button>
+  </div>`;
+  openModal(html);
+}
+function submitQuote(id) {
+  const p = PRODUCTS.find(x=>x.id===id);
+  const qty = document.getElementById('rfq-qty').value || 10;
+  const en = currentLang === 'en';
+  showToast(currentLang==='ar' ? `📩 تم إرسال طلب عرض سعر لـ ${p.nameAr} (كمية ${qty})` : `📩 Quote request sent for ${p.nameEn} (qty ${qty})`);
+  closeModal();
+}
+
+// ===== SAVE CART / REORDER =====
+function saveCart() {
+  if (!cartItems.length) { showToast(currentLang==='ar'?'السلة فارغة':'Cart is empty'); return; }
+  localStorage.setItem('savedCart', JSON.stringify(cartItems));
+  showToast(currentLang==='ar'?'💾 تم حفظ السلة للاسترجاع لاحقاً':'💾 Cart saved');
+}
+function reorderLast() {
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem('lastOrder')) || []; } catch(e) {}
+  if (!saved.length) { showToast(currentLang==='ar'?'لا يوجد طلب سابق':'No previous order'); return; }
+  cartItems = cartItems.concat(saved);
+  updateCartBadge();
+  showToast(currentLang==='ar'?`🔄 تم إعادة طلب ${saved.length} منتج`:'🔄 Reordered '+saved.length+' items');
+}
+function checkoutSaveLast() {
+  localStorage.setItem('lastOrder', JSON.stringify(cartItems));
+}
+
+// ===== REVIEWS =====
+const REVIEWS = [
+  { author:'د. أحمد الخالدي', authorEn:'Dr. Ahmed Al-Khalidi', role:'استشاري تجميل الأسنان', roleEn:'Cosmetic Dentist', rating:5, date:'2026-05-14', text:'الكومبوزيت النانوهيبرد ممتاز، تماسك عالي وألوان طبيعية. أنصح به بشدة.', textEn:'Excellent nanohybrid composite, high bond strength and natural shades. Highly recommended.', product:'كومبوزيت نانوهيبرد', productEn:'Nanohybrid Composite' },
+  { author:'د. سارة المنصور', authorEn:'Dr. Sara Al-Mansour', role:'أخصائية علاج الجذور', roleEn:'Endodontist', rating:5, date:'2026-06-02', text:'الملفات الدوارة قصّت زمن العلاج للنصف تقريباً. جودة ممتازة وأسعار تنافسية.', textEn:'Rotary files cut treatment time nearly in half. Excellent quality and competitive prices.', product:'جدل NiTi', productEn:'NiTi Rotary Files' },
+  { author:'د. خالد العتيبي', authorEn:'Dr. Khaled Al-Otaibi', role:'أخصائي زراعة', roleEn:'Implantologist', rating:4, date:'2026-07-19', text:'الأوتوكلاف موثوق وثابت الحرارة. خدمة ما بعد البيع ممتازة. خصم الجملة للمؤسسات مناسب جداً.', textEn:'Reliable autoclave with stable temperature. Excellent after-sales service. Great wholesale discounts for institutions.', product:'أوتوكلاف 18L', productEn:'Autoclave 18L' },
+];
+function renderReviews() {
+  const grid = document.getElementById('review-grid');
+  grid.innerHTML = REVIEWS.map(r => `
+    <div class="review-card">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center text-gold font-arabic font-bold">${currentLang==='en'?r.authorEn.replace('Dr. ','').charAt(0):r.author.replace('د. ','').charAt(0)}</div>
+        <div>
+          <div class="ar font-arabic font-bold text-sm text-navy-900 dark:text-white">${r.author}</div>
+          <div class="en hidden font-english font-bold text-sm text-navy-900 dark:text-white">${r.authorEn}</div>
+          <div class="ar font-arabic text-[11px] text-navy-900/50 dark:text-slate-400">${r.role}</div>
+          <div class="en hidden font-english text-[11px] text-navy-900/50 dark:text-slate-400">${r.roleEn}</div>
+        </div>
+      </div>
+      <div class="stars mb-2">${starsHtml(r.rating)}</div>
+      <p class="ar font-arabic text-xs text-navy-900/70 dark:text-slate-300 leading-relaxed mb-3">"${r.text}"</p>
+      <p class="en hidden font-english text-xs text-navy-900/70 dark:text-slate-300 leading-relaxed mb-3">"${r.textEn}"</p>
+      <div class="ar font-arabic text-[11px] font-bold text-gold">${r.product}</div>
+      <div class="en hidden font-english text-[11px] font-bold text-gold">${r.productEn}</div>
+    </div>`).join('');
+}
+
+// ===== SEARCH SUGGEST =====
+function searchSuggest() {
+  const q = document.getElementById('global-search').value.trim().toLowerCase();
+  const box = document.getElementById('search-suggest');
+  if (!q) { box.classList.add('hidden'); return; }
+  const matches = PRODUCTS.filter(p => (p.nameAr+p.nameEn+p.brand+p.specialty+p.main).toLowerCase().includes(q)).slice(0,6);
+  if (!matches.length) { box.classList.remove('hidden'); box.innerHTML=`<div class="p-4 ${currentLang==='en'?'font-english':'font-arabic'} text-xs text-navy-900/50 dark:text-slate-400">${UI.noResults[currentLang==='en'?1:0]}</div>`; return; }
+  box.classList.remove('hidden');
+  box.innerHTML = matches.map(p => `
+    <div class="suggest-item" onclick="goToProduct('${p.id}')">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-ice to-mint-light/30 dark:from-navy-700 dark:to-navy-800 flex items-center justify-center">
+        <iconify-icon icon="mdi:tooth" width="16" class="text-gold"></iconify-icon>
+      </div>
+      <div class="flex-1">
+        <div class="${currentLang==='en'?'font-english':'font-arabic'} text-xs font-bold text-navy-900 dark:text-white">${pname(p)}</div>
+        <div class="text-[10px] text-navy-900/50 dark:text-slate-400">${p.brand} • ${currentLang==='en'?(SPEC_MAP[p.specialty]||p.specialty):p.specialty}</div>
+      </div>
+      <span class="font-bold text-xs text-gold">${fmt(getDisplayPrice(p))}</span>
+    </div>`).join('');
+}
+function goToProduct(id) {
+  document.getElementById('global-search').value='';
+  document.getElementById('search-suggest').classList.add('hidden');
+  const p = PRODUCTS.find(x=>x.id===id);
+  if (p) { activeMain=p.main; activeSpecialty=p.specialty; buildSpecialtyTabs(); renderCatalog(); document.getElementById('catalog').scrollIntoView({behavior:'smooth'}); }
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('#global-search') && !e.target.closest('#search-suggest')) {
+    const s=document.getElementById('search-suggest'); if(s) s.classList.add('hidden');
+  }
+});
+
+// ===== RENDER CATALOG =====
+function renderCatalog() {
+  const list = getFiltered();
+  const grid = document.getElementById('product-grid');
+  const nores = document.getElementById('no-results');
+  const count = document.getElementById('result-count');
+  const mainLabel = activeMain==='all' ? '' : (activeMain==='العلامات التجارية' ? '' : ` — ${tl(activeMain, SPEC_MAP[activeMain] || activeMain)}`);
+  if (count) count.innerHTML = `(${list.length}) <span class="ar">منتج</span><span class="en hidden">products</span>${mainLabel}`;
+  nores.classList.toggle('hidden', list.length>0);
+  const noresMsg = `<div class="text-center py-16"><iconify-icon icon="ph:magnifying-glass" width="48" class="mx-auto text-navy-900/20 dark:text-slate-600"></iconify-icon>
+    <p class="ar font-arabic text-navy-900/50 dark:text-slate-400 mt-3 text-sm">${UI.emptyMsg[0]}</p>
+    <p class="en hidden font-english text-navy-900/50 dark:text-slate-400 mt-3 text-sm">${UI.emptyMsg[1]}</p></div>`;
+  grid.innerHTML = list.map(p => {
+    const price = getDisplayPrice(p);
+    const tier = getTierPrice(p) * CURRENCIES[currentCurr].rate;
+    const showMember = (currentRole==='institution'||currentRole==='vendor') && tier < price;
+    const spec = tl(p.specialty, SPEC_MAP[p.specialty] || p.specialty);
+    const isEquip = p.main==='المعدات';
+    return `
+    <div class="pcard p-4 flex flex-col">
+      <div class="relative mb-3 rounded-2xl overflow-hidden bg-gradient-to-br from-ice to-mint-light/30 dark:from-navy-700 dark:to-navy-800">
+        <img src="https://picsum.photos/seed/${p.img}/300/200" alt="${pname(p)}" class="w-full h-40 object-cover product-img-zoom">
+        <button onclick="toggleWish('${p.id}', this)" class="wish-btn ${wishlist.has(p.id)?'active':''}"><iconify-icon icon="ph:heart-fill" width="15"></iconify-icon></button>
+        ${p.stock<1?`<span class="absolute bottom-2 left-2 px-2 py-1 rounded-full bg-red-500/90 text-white text-[9px] font-bold"><span class="ar">غير متوفر</span><span class="en hidden">Out of stock</span></span>`:''}
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="px-2 py-0.5 rounded-full light:bg-ice dark:bg-navy-700 text-[9px] font-bold light:text-navy-500 dark:text-gold-light">${p.brand}</span>
+          <span class="px-2 py-0.5 rounded-full light:bg-mint-light/50 dark:bg-mint/10 text-[9px] font-bold text-mint-dark dark:text-mint">${spec}</span>
+        </div>
+        <div class="ar font-arabic font-bold text-sm text-navy-900 dark:text-white mb-1">${p.nameAr}</div>
+        <div class="en hidden font-english font-bold text-sm text-navy-900 dark:text-white mb-1">${p.nameEn}</div>
+        <div class="flex items-center gap-1 mb-2"><span class="stars">${starsHtml(Math.round(p.rating))}</span><span class="text-[10px] text-navy-900/50 dark:text-slate-400">${p.rating} (${p.reviews})</span></div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="font-bold text-gold">${fmt(price)}</span>
+          ${showMember ? '<span class="price-was ar font-arabic">'+fmt(p.priceSAR*CURRENCIES[currentCurr].rate)+'</span>' : ''}
+        </div>
+        ${currentRole==='institution' || currentRole==='vendor' ? `<div class="tier-row highlight"><span class="ar font-arabic">${UI.yourPrice[0]} (${roleName(currentRole)})</span><span class="en hidden font-english">${UI.yourPrice[1]} (${roleName(currentRole,true)})</span><span class="font-bold text-mint-dark dark:text-mint">${fmt(tier)}</span></div>` : ''}
+        ${isEquip ? `<div class="mt-2"><button onclick="requestQuote('${p.id}')" class="w-full py-2 rounded-full border-2 border-gold/40 text-gold ar font-arabic text-xs font-bold hover:bg-gold hover:text-navy-900 transition-all"><span class="ar">📨 ${UI.requestQuote[0]}</span><span class="en hidden">📨 ${UI.requestQuote[1]}</span></button></div>` : ''}
+      </div>
+      ${!isEquip ? `<button onclick="addToCart('${p.id}', this)" class="mt-3 w-full py-2.5 rounded-full bg-gold ar font-arabic text-xs font-bold text-navy-900 hover:opacity-90 flex items-center justify-center gap-2"><iconify-icon icon="ph:shopping-bag-bold" width="15"></iconify-icon> ${UI.addToCart[0]}</button><button onclick="addToCart('${p.id}', this)" class="en hidden mt-3 w-full py-2.5 rounded-full bg-gold font-english text-xs font-bold text-navy-900 hover:opacity-90 flex items-center justify-center gap-2"><iconify-icon icon="ph:shopping-bag-bold" width="15"></iconify-icon> ${UI.addToCart[1]}</button>` : ''}
+    </div>`;
+  }).join('');
+  const noresEl = document.getElementById('no-results');
+  noresEl.innerHTML = noresMsg;
+}
+
+// init (script at end of body -> DOM ready)
+if (document.getElementById('product-grid')) { applyLang(); updateCartBadge(); setRole('customer', true); }
 
 // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+function scrollToCatalog() { document.getElementById('catalog').scrollIntoView({ behavior:'smooth' }); }
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
