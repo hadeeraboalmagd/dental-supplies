@@ -144,7 +144,7 @@ body.light { background: #FFFFFF; color: #0B1A2E; transition: background 0.5s, c
 /* Chatbot */
 .chatbot-container {
   position: fixed; bottom: 100px; left: 24px; z-index: 100;
-  width: 360px; max-height: 500px; border-radius: 24px; overflow: hidden;
+  width: min(360px, calc(100vw - 32px)); max-height: min(500px, calc(100vh - 140px)); border-radius: 24px; overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,0.2);
   transform: scale(0) translateY(20px); transform-origin: bottom left;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2101,6 +2101,7 @@ const PRODUCTS = [
   { id:'p12', nameAr:'طلاء سيراميك للتلميع', nameEn:'Ceramic Polishing Kit', brand:'3M', main:'مستلزمات المعمل', type:'قوالب وطلاءات', specialty:'التركيبات', priceSAR:210, wholesalePriceSAR:160, rating:4.5, reviews:47, stock:55, img:'dental-mirror-pro', country:'الولايات المتحدة' },
   { id:'p13', nameAr:'حمض إيتش جل فوسفوري', nameEn:'Phosphoric Etch Gel', brand:'Dentsply', main:'المواد الاستهلاكية', type:'الأحماض', specialty:'الحشو والترميم', priceSAR:75, wholesalePriceSAR:50, rating:4.2, reviews:102, stock:0, img:'composite-filling', country:'الولايات المتحدة' },
   { id:'p14', nameAr:'مطرقة ومثقاب عظمي', nameEn:'Bone Mallet & Drill', brand:'Dentsply', main:'الأدوات الدقيقة', type:'أدوات الجراحة', specialty:'زراعة الأسنان', priceSAR:680, wholesalePriceSAR:540, rating:4.7, reviews:23, stock:12, img:'drill', country:'سويسرا' },
+  { id:'p15', nameAr:'مادة حشو أدسل المركبة', nameEn:'Adsel Composite Filling', brand:'Adsel', main:'المواد الاستهلاكية', type:'الكومبوزيت', specialty:'الحشو والترميم', priceSAR:290, wholesalePriceSAR:210, rating:4.6, reviews:19, stock:35, img:'local:adsel.jfif', country:'ألمانيا' },
 ];
 
 // ===== CATALOG STATE =====
@@ -2112,7 +2113,7 @@ let activeRating = 0;
 let onlyStock = true;
 let sortMode = 'featured';
 
-const BRANDS = ['3M','Dentsply','GC','Ivoclar','Zeiss'];
+const BRANDS = ['Adsel','3M','Dentsply','GC','Ivoclar','Zeiss'];
 const PRICE_RANGES = [
   { key:'0-200', labelAr:'أقل من 200', labelEn:'Under 200', min:0, max:200 },
   { key:'200-500', labelAr:'200 - 500', labelEn:'200 - 500', min:200, max:500 },
@@ -2128,6 +2129,10 @@ function fmt(v) {
 }
 function tl(ar, en) { return currentLang === 'en' ? en : ar; }
 function pname(p) { return currentLang === 'en' ? p.nameEn : p.nameAr; }
+function productImg(p) {
+  if (p.img && p.img.indexOf('local:') === 0) return p.img.slice(6);
+  return 'https://picsum.photos/seed/' + p.img + '/300/200';
+}
 const UI = {
   addToCart: ['أضف للسلة','Add to Cart'],
   requestQuote: ['📨 اطلب عرض سعر','📨 Request Quote'],
@@ -2451,7 +2456,7 @@ function renderCatalog() {
     return `
     <div class="pcard p-4 flex flex-col">
       <div class="relative mb-3 rounded-2xl overflow-hidden bg-gradient-to-br from-ice to-mint-light/30 dark:from-navy-700 dark:to-navy-800">
-        <img src="https://picsum.photos/seed/${p.img}/300/200" alt="${pname(p)}" class="w-full h-40 object-cover product-img-zoom">
+        <img src="${productImg(p)}" alt="${pname(p)}" class="w-full h-40 object-cover product-img-zoom">
         <button onclick="toggleWish('${p.id}', this)" class="wish-btn ${wishlist.has(p.id)?'active':''}"><iconify-icon icon="ph:heart-fill" width="15"></iconify-icon></button>
         ${p.stock<1?`<span class="absolute bottom-2 left-2 px-2 py-1 rounded-full bg-red-500/90 text-white text-[9px] font-bold"><span class="ar">غير متوفر</span><span class="en hidden">Out of stock</span></span>`:''}
       </div>
