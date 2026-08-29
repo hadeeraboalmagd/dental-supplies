@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دنتال سبلايز | Dental Supplies</title>
+<meta name="description" content="مستلزمات طب الأسنان الفاخرة - جودة عالمية، شحن مبرد، دعم فني متخصص">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        navy: { 50:'#E8EDF3',100:'#C5D0E0',200:'#9BAFC5',300:'#718DAA',400:'#547497',500:'#375B84',600:'#2E4F74',700:'#253F5E',800:'#1C3049',900:'#0B1A2E',950:'#060F1A' },
+        gold: { light:'#E8D5A8', DEFAULT:'#C9A96E', dark:'#A68B4B' },
+        rosegold: '#D4A5A5',
+        ice: '#E8F4F8',
+        mint: { light:'#D4EDDA', DEFAULT:'#A8DAB5', dark:'#6BBF7B' },
+        ivory: '#FFFFF0',
+      },
+      fontFamily: {
+        arabic: ['Tajawal', 'sans-serif'],
+        english: ['Inter', 'sans-serif'],
+        display: ['Playfair Display', 'serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Tajawal', 'Inter', sans-serif; overflow-x: hidden; }
+body.dark { background: #0B1A2E; color: #F1F5F9; transition: background 0.5s, color 0.5s; }
+body.light { background: #FFFFFF; color: #0B1A2E; transition: background 0.5s, color 0.5s; }
+
+/* Smile Loader */
+#smile-loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #FFFFFF; display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#smile-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.dark #smile-loader { background: #0B1A2E; }
+#smile-canvas { width: 300px; height: 300px; }
+
+/* Glassmorphism Header */
+.header-glass {
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+}
+.light .header-glass { background: rgba(255,255,255,0.7); border-bottom: 1px solid rgba(11,26,46,0.08); }
+.dark .header-glass { background: rgba(11,26,46,0.8); border-bottom: 1px solid rgba(201,169,110,0.15); }
+.header-glass.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+.dark .header-glass.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+
+/* Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #C9A96E, #E8D5A8);
+  color: #0B1A2E; font-weight: 700; border-radius: 9999px; padding: 12px 32px;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+  box-shadow: 0 4px 15px rgba(201,169,110,0.3);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,169,110,0.45); }
+.btn-gold::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn-gold:hover::after { opacity: 1; }
+
+.btn-outline {
+  border: 2px solid #C9A96E; color: #C9A96E; font-weight: 600;
+  border-radius: 9999px; padding: 10px 30px; transition: all 0.3s ease;
+  background: transparent;
+}
+.btn-outline:hover { background: #C9A96E; color: #0B1A2E; transform: translateY(-2px); }
+
+/* Tooth Glow Effect */
+.tooth-glow {
+  transition: all 0.4s ease; border-radius: 20px; position: relative;
+}
+.tooth-glow::before {
+  content: ''; position: absolute; inset: -3px; border-radius: 22px;
+  background: linear-gradient(135deg, rgba(168,218,181,0.5), rgba(201,169,110,0.5));
+  opacity: 0; transition: opacity 0.4s ease; z-index: -1;
+  filter: blur(8px);
+}
+.tooth-glow:hover::before { opacity: 1; }
+.tooth-glow:hover { transform: translateY(-8px) scale(1.02); }
+
+/* 3D Carousel */
+.carousel-scene { perspective: 1200px; width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; }
+.carousel-track {
+  width: 280px; height: 360px; position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.carousel-item {
+  position: absolute; width: 280px; height: 360px;
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  transition: all 0.5s ease;
+  backface-visibility: hidden;
+}
+.light .carousel-item { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.06); }
+.dark .carousel-item { background: #132B4F; border: 1px solid rgba(201,169,110,0.15); }
+
+/* Reveal Animations */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Floating Animation */
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+.float-anim { animation: float 4s ease-in-out infinite; }
+.float-anim-delay { animation: float 4s ease-in-out 1s infinite; }
+
+/* Hero Gradient Animation */
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hero-gradient {
+  background: linear-gradient(-45deg, #E8F4F8, #FFFFFF, #FFFFF0, #E8F4F8, #D4EDDA);
+  background-size: 400% 400%;
+  animation: heroGradient 12s ease infinite;
+}
+.dark .hero-gradient {
+  background: linear-gradient(-45deg, #0B1A2E, #132B4F, #0F2240, #1C3049);
+  background-size: 400% 400%;
+  animation: heroGradient 12s ease infinite;
+}
+
+/* Chatbot */
+.chatbot-container {
+  position: fixed; bottom: 100px; left: 24px; z-index: 100;
+  width: 360px; max-height: 500px; border-radius: 24px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  transform: scale(0) translateY(20px); transform-origin: bottom left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[dir="rtl"] .chatbot-container { left: auto; right: 24px; transform-origin: bottom right; }
+.chatbot-container.open { transform: scale(1) translateY(0); }
+.light .chatbot-container { background: #FFFFFF; border: 1px solid rgba(11,26,46,0.08); }
+.dark .chatbot-container { background: #132B4F; border: 1px solid rgba(201,169,110,0.15); }
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed; bottom: 28px; left: 24px; z-index: 99;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  transition: all 0.3s ease; cursor: pointer;
+}
+[dir="rtl"] .whatsapp-float { left: auto; right: 24px; }
+.whatsapp-float:hover { transform: scale(1.1) translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+
+/* Clinic Tour Cards */
+.clinic-room {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.clinic-room:hover { transform: translateY(-12px) scale(1.03); }
+.clinic-room .room-products {
+  max-height: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.3s ease; opacity: 0;
+}
+.clinic-room:hover .room-products { max-height: 200px; opacity: 1; }
+
+/* Category Cards */
+.category-card {
+  transition: all 0.4s ease; border-radius: 24px; overflow: hidden; cursor: pointer;
+}
+.category-card:hover { transform: translateY(-8px); }
+.category-card .cat-overlay {
+  transition: all 0.4s ease;
+}
+.category-card:hover .cat-overlay { background: rgba(201,169,110,0.85); }
+.light .category-card { background: #FFFFFF; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.dark .category-card { background: #132B4F; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+.light ::-webkit-scrollbar-thumb { background: #C5D0E0; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #253F5E; border-radius: 3px; }
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 90;
+  transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[dir="rtl"] .mobile-menu { transform: translateX(-100%); }
+.mobile-menu.open { transform: translateX(0); }
+.light .mobile-menu { background: rgba(255,255,255,0.98); }
+.dark .mobile-menu { background: rgba(11,26,46,0.98); }
+
+/* Pulse ring for WhatsApp */
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.whatsapp-float::before {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: #25D366; animation: pulseRing 2s ease-out infinite; z-index: -1;
+}
+
+/* Product image zoom */
+.product-img-zoom { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.product-img-zoom:hover { transform: scale(1.08); }
+
+/* Testimonial */
+.testimonial-card {
+  border-radius: 24px; position: relative; overflow: hidden;
+}
+.testimonial-card::before {
+  content: '"'; position: absolute; top: -10px; right: 20px;
+  font-size: 120px; font-family: 'Playfair Display', serif; line-height: 1;
+  color: rgba(201,169,110,0.1);
+}
+[dir="rtl"] .testimonial-card::before { right: auto; left: 20px; }
+
+/* Nav link underline */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ''; position: absolute; bottom: -4px; right: 0; width: 0; height: 2px;
+  background: #C9A96E; transition: width 0.3s ease; border-radius: 2px;
+}
+[dir="ltr"] .nav-link::after { right: auto; left: 0; }
+.nav-link:hover::after { width: 100%; }
+
+/* Stat counter */
+@keyframes countUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Toast notification */
+.toast {
+  position: fixed; top: 100px; left: 50%; transform: translateX(-50%) translateY(-20px);
+  z-index: 200; padding: 14px 28px; border-radius: 9999px;
+  font-weight: 600; font-size: 14px; opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.light .toast { background: #0B1A2E; color: #FFFFFF; }
+.dark .toast { background: #C9A96E; color: #0B1A2E; }
+</style>
+</head>
+
+<body class="light">
+
+<!-- Toast Notification -->
+<div id="toast" class="toast"></div>
+
+<!-- ========== SMILE LOADER ========== -->
+<div id="smile-loader">
+  <canvas id="smile-canvas" width="300" height="300"></canvas>
+</div>
+
+<!-- ========== HEADER ========== -->
+<header id="header" class="header-glass fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+          <iconify-icon icon="mdi:tooth" width="22" class="text-navy-900"></iconify-icon>
+        </div>
+        <div>
+          <span class="ar font-arabic font-bold text-navy-900 text-sm sm:text-base leading-tight block dark:text-white">دنتال سبلايز</span>
+          <span class="en hidden font-english font-semibold text-navy-900 text-xs leading-tight block dark:text-white">Dental Supplies</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#hero" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">الرئيسية</a>
+        <a href="#why-us" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">لماذا نحن</a>
+        <a href="#products" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">المنتجات</a>
+        <a href="#categories" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">التصنيفات</a>
+        <a href="#clinic-tour" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">جولة العيادة</a>
+        <a href="#contact" class="nav-link ar font-arabic font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">تواصل معنا</a>
+        <!-- EN Nav -->
+        <a href="#hero" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Home</a>
+        <a href="#why-us" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Why Us</a>
+        <a href="#products" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Products</a>
+        <a href="#categories" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Categories</a>
+        <a href="#clinic-tour" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Clinic Tour</a>
+        <a href="#contact" class="nav-link en hidden font-english font-medium text-navy-900/80 dark:text-slate-300 hover:text-gold dark:hover:text-gold transition-colors text-sm">Contact</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Toggle -->
+        <button onclick="toggleLang()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors" title="تبديل اللغة">
+          <iconify-icon icon="ph:globe-simple-bold" width="18" class="text-navy-900/70 dark:text-slate-400"></iconify-icon>
+        </button>
+        <!-- Dark Mode Toggle -->
+        <button onclick="toggleDark()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors" title="الوضع الليلي">
+          <iconify-icon icon="ph:sun-dim-bold" width="18" class="text-navy-900/70 dark:text-slate-400 dark:hidden"></iconify-icon>
+          <iconify-icon icon="ph:moon-stars-bold" width="18" class="text-slate-400 hidden dark:block"></iconify-icon>
+        </button>
+        <!-- Cart -->
+        <button class="hidden sm:flex w-9 h-9 rounded-full items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors relative">
+          <iconify-icon icon="ph:shopping-bag-bold" width="18" class="text-navy-900/70 dark:text-slate-400"></iconify-icon>
+          <span class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-gold rounded-full text-[10px] font-bold text-navy-900 flex items-center justify-center">3</span>
+        </button>
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-full flex items-center justify-center hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors">
+          <iconify-icon icon="ph:list-bold" width="20" class="text-navy-900/70 dark:text-slate-400" id="menu-icon"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu backdrop-blur-xl">
+  <div class="flex flex-col items-center justify-center h-full gap-6">
+    <a href="#hero" onclick="toggleMobileMenu()" class="ar font-arabic text-2xl font-bold text-navy-900 dark:text-white hover:text-gold transition-colors">الرئيسية</a>
+    <a href="#why-us" onclick="toggleMobileMenu()" class="ar font-arabic text-2xl font-bold text-navy-900 dark:text-white hover:text-gold transition-colors">لماذا نحن</a>
+    <a href="#products" onclick="toggleMobileMenu()" class="ar font-arabic text-2xl font-bold text-navy-900 dark:text-white hover:text-gold transition-colors">المنتجات</a>
+    <a href="#categories" onclick="toggleMobileMenu()" class="ar font-arabic text-2xl font-bold text-navy-900 dark:text-white hover:text-gold transition-colors">التصنيفات</a>
+    <a href="#clinic-tour" onclick="toggleMobileMenu()" class="ar font-arabic text-2xl font-bold text-navy-900 dark:text-white hover:text-gold transition-colors">جولة العيادة</a>
+    <a href="#contact" onclick="toggleMobileMenu()" class="ar font-arabic text-2xl font-bold text-navy-900 dark:text-white hover:text-gold transition-colors">تواصل معنا</a>
+    <button onclick="toggleMobileMenu()" class="mt-8 w-12 h-12 rounded-full border-2 border-navy-900/20 dark:border-white/20 flex items-center justify-center">
+      <iconify-icon icon="ph:x-bold" width="20" class="text-navy-900 dark:text-white"></iconify-icon>
+    </button>
+  </div>
+</div>
+
+<!-- ========== HERO SECTION ========== -->
+<section id="hero" class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute top-20 left-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl float-anim"></div>
+  <div class="absolute bottom-20 right-10 w-96 h-96 bg-mint-light/40 rounded-full blur-3xl float-anim-delay dark:bg-mint/10"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ice/50 rounded-full blur-3xl dark:bg-navy-800/30"></div>
+  
+  <!-- Decorative arcs (dental arch inspired) -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] border border-gold/10 rounded-b-full dark:border-gold/5"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] border border-gold/10 rounded-b-full dark:border-gold/5"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Text Content -->
+      <div class="text-center lg:text-right">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 dark:bg-gold/15 text-gold text-xs font-bold uppercase tracking-widest mb-6">
+            <iconify-icon icon="ph:sparkle-fill" width="14"></iconify-icon>
+            <span class="ar">الجودة الفاخرة في طب الأسنان</span>
+            <span class="en hidden">Premium Dental Quality</span>
+          </span>
+        </div>
+        
+        <h1 class="reveal reveal-delay-1">
+          <span class="ar font-arabic font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight text-navy-900 dark:text-white mb-2 block">
+            ابتسامتك..
+          </span>
+          <span class="ar font-arabic font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-2 block" style="background: linear-gradient(135deg, #C9A96E, #A68B4B, #E8D5A8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            عنوان ثقتك
+          </span>
+          <span class="ar font-arabic font-light text-xl sm:text-2xl text-navy-900/60 dark:text-slate-400 block mt-4">نحن نوفر أدواتها</span>
+          
+          <span class="en hidden font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight text-navy-900 dark:text-white mb-2 block">
+            Your Smile,
+          </span>
+          <span class="en hidden font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-2 block" style="background: linear-gradient(135deg, #C9A96E, #A68B4B, #E8D5A8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Our Mission
+          </span>
+          <span class="en hidden font-english font-light text-xl sm:text-2xl text-navy-900/60 dark:text-slate-400 block mt-4">We provide the tools</span>
+        </h1>
+
+        <p class="reveal reveal-delay-2 ar font-arabic text-navy-900/60 dark:text-slate-400 text-base sm:text-lg max-w-lg mx-auto lg:mx-0 mt-6 leading-relaxed">
+          مستلزمات طب الأسنان من أرقى العلامات العالمية، توصلك أينما كنت بشحن مبرد ومخصص للحفاظ على جودة المنتجات الحساسة.
+        </p>
+        <p class="reveal reveal-delay-2 en hidden font-english text-navy-900/60 dark:text-slate-400 text-base sm:text-lg max-w-lg mx-auto lg:mx-0 mt-6 leading-relaxed">
+          Premium dental supplies from the world's finest brands, delivered with cold-chain shipping to preserve sensitive product quality.
+        </p>
+
+        <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
+          <a href="#products" class="btn-gold ar font-arabic text-sm">استكشف المنتجات</a>
+          <a href="#contact" class="btn-outline ar font-arabic text-sm">اطلب استشارة مجانية</a>
+          <a href="#products" class="btn-gold en hidden font-english text-sm">Explore Products</a>
+          <a href="#contact" class="btn-outline en hidden font-english text-sm">Free Consultation</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="reveal reveal-delay-4 flex items-center justify-center lg:justify-start gap-8 mt-10">
+          <div class="text-center">
+            <div class="font-arabic font-extrabold text-2xl sm:text-3xl text-navy-900 dark:text-white" data-count="2500">0+</div>
+            <div class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-500 mt-1">منتج متوفر</div>
+            <div class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-500 mt-1">Products</div>
+          </div>
+          <div class="w-px h-10 bg-navy-900/10 dark:bg-white/10"></div>
+          <div class="text-center">
+            <div class="font-arabic font-extrabold text-2xl sm:text-3xl text-navy-900 dark:text-white" data-count="500">0+</div>
+            <div class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-500 mt-1">عيادة عميلة</div>
+            <div class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-500 mt-1">Clinics</div>
+          </div>
+          <div class="w-px h-10 bg-navy-900/10 dark:bg-white/10"></div>
+          <div class="text-center">
+            <div class="font-arabic font-extrabold text-2xl sm:text-3xl text-navy-900 dark:text-white" data-count="15">0+</div>
+            <div class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-500 mt-1">عام خبرة</div>
+            <div class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-500 mt-1">Years Exp.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="reveal reveal-delay-2 hidden lg:flex justify-center items-center relative">
+        <div class="relative w-[420px] h-[420px]">
+          <!-- Outer ring -->
+          <div class="absolute inset-0 rounded-full border-2 border-dashed border-gold/20 animate-[spin_30s_linear_infinite]"></div>
+          <!-- Middle ring -->
+          <div class="absolute inset-8 rounded-full border border-mint-light/50 dark:border-mint/20 animate-[spin_20s_linear_infinite_reverse]"></div>
+          <!-- Inner circle -->
+          <div class="absolute inset-16 rounded-full bg-gradient-to-br from-white to-ice dark:from-navy-800 dark:to-navy-900 shadow-2xl flex items-center justify-center overflow-hidden">
+            <img src="https://picsum.photos/seed/dental-smile-hero/300/300" alt="Perfect Smile" class="w-full h-full object-cover opacity-90">
+            <div class="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent dark:from-navy-900/50"></div>
+          </div>
+          <!-- Floating product badges -->
+          <div class="absolute top-4 right-4 bg-white dark:bg-navy-800 rounded-2xl p-3 shadow-xl float-anim flex items-center gap-2">
+            <div class="w-10 h-10 rounded-xl bg-mint-light dark:bg-mint/20 flex items-center justify-center">
+              <iconify-icon icon="mdi:tooth" width="20" class="text-mint-dark dark:text-mint"></iconify-icon>
+            </div>
+            <div>
+              <div class="ar font-arabic text-[10px] font-bold text-navy-900 dark:text-white">تبييض</div>
+              <div class="en hidden font-english text-[10px] font-bold text-navy-900 dark:text-white">Whitening</div>
+              <div class="text-[9px] text-gold font-bold">PRO</div>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-navy-800 rounded-2xl p-3 shadow-xl float-anim-delay flex items-center gap-2">
+            <div class="w-10 h-10 rounded-xl bg-ice dark:bg-navy-700 flex items-center justify-center">
+              <iconify-icon icon="ph:shield-checkered-fill" width="20" class="text-navy-500 dark:text-gold"></iconify-icon>
+            </div>
+            <div>
+              <div class="ar font-arabic text-[10px] font-bold text-navy-900 dark:text-white">معتمد عالمياً</div>
+              <div class="en hidden font-english text-[10px] font-bold text-navy-900 dark:text-white">Certified</div>
+              <div class="text-[9px] text-mint-dark dark:text-mint font-bold">FDA ✓</div>
+            </div>
+          </div>
+          <div class="absolute top-1/2 -left-6 bg-white dark:bg-navy-800 rounded-2xl p-3 shadow-xl float-anim flex items-center gap-2">
+            <div class="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center">
+              <iconify-icon icon="ph:truck-fill" width="20" class="text-gold"></iconify-icon>
+            </div>
+            <div>
+              <div class="ar font-arabic text-[10px] font-bold text-navy-900 dark:text-white">شحن مبرد</div>
+              <div class="en hidden font-english text-[10px] font-bold text-navy-900 dark:text-white">Cold Ship</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+    <span class="ar font-arabic text-[10px] text-navy-900/40 dark:text-slate-500 uppercase tracking-widest">اكتشف المزيد</span>
+    <iconify-icon icon="ph:caret-down" width="16" class="text-gold"></iconify-icon>
+  </div>
+</section>
+
+<!-- ========== WHY US SECTION ========== -->
+<section id="why-us" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  <div class="light:bg-ice/30 dark:bg-navy-950/50 absolute inset-0"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <span class="reveal inline-block px-4 py-1.5 rounded-full bg-gold/10 dark:bg-gold/15 text-gold text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="ar">لماذا تختارنا</span>
+        <span class="en hidden">Why Choose Us</span>
+      </span>
+      <h2 class="reveal reveal-delay-1 ar font-arabic font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        نحن لا نبيع منتجات..<br>نحن نبني <span class="text-gold">ثقة</span>
+      </h2>
+      <h2 class="reveal reveal-delay-1 en hidden font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        We Don't Just Sell Products..<br>We Build <span class="text-gold">Trust</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div class="reveal reveal-delay-1 tooth-glow p-6 text-center light:bg-white dark:bg-navy-800/50">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/5 dark:from-gold/15 dark:to-gold/5 flex items-center justify-center mx-auto mb-5">
+          <iconify-icon icon="ph:seal-check-fill" width="32" class="text-gold"></iconify-icon>
+        </div>
+        <h3 class="ar font-arabic font-bold text-lg text-navy-900 dark:text-white mb-2">جودة عالمية</h3>
+        <h3 class="en hidden font-english font-bold text-lg text-navy-900 dark:text-white mb-2">Global Quality</h3>
+        <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">منتجات معتمدة من FDA وCE بمعايير الجودة الأوروبية والأمريكية</p>
+        <p class="en hidden font-english text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">FDA & CE certified products with European and American quality standards</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="reveal reveal-delay-2 tooth-glow p-6 text-center light:bg-white dark:bg-navy-800/50">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-mint-light/80 to-mint-light/30 dark:from-mint/15 dark:to-mint/5 flex items-center justify-center mx-auto mb-5">
+          <iconify-icon icon="ph:snowflake-fill" width="32" class="text-mint-dark dark:text-mint"></iconify-icon>
+        </div>
+        <h3 class="ar font-arabic font-bold text-lg text-navy-900 dark:text-white mb-2">شحن مبرد</h3>
+        <h3 class="en hidden font-english font-bold text-lg text-navy-900 dark:text-white mb-2">Cold Chain</h3>
+        <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">نظام تبريد متخصص يحافظ على فعالية المواد الحساسة أثناء الشحن</p>
+        <p class="en hidden font-english text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">Specialized cooling system maintaining sensitive materials efficacy during shipping</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="reveal reveal-delay-3 tooth-glow p-6 text-center light:bg-white dark:bg-navy-800/50">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-ice to-white dark:from-navy-700 dark:to-navy-800 flex items-center justify-center mx-auto mb-5">
+          <iconify-icon icon="ph:headset-fill" width="32" class="text-navy-500 dark:text-gold-light"></iconify-icon>
+        </div>
+        <h3 class="ar font-arabic font-bold text-lg text-navy-900 dark:text-white mb-2">دعم فني متخصص</h3>
+        <h3 class="en hidden font-english font-bold text-lg text-navy-900 dark:text-white mb-2">Expert Support</h3>
+        <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">فريق من أطباء الأسنان المتخصصين جاهز لمساعدتك على مدار الساعة</p>
+        <p class="en hidden font-english text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">Team of specialized dentists ready to assist you around the clock</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="reveal reveal-delay-4 tooth-glow p-6 text-center light:bg-white dark:bg-navy-800/50">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rosegold/30 to-rosegold/10 dark:from-rosegold/15 dark:to-rosegold/5 flex items-center justify-center mx-auto mb-5">
+          <iconify-icon icon="ph:tag-fill" width="32" class="text-rosegold"></iconify-icon>
+        </div>
+        <h3 class="ar font-arabic font-bold text-lg text-navy-900 dark:text-white mb-2">أسعار تنافسية</h3>
+        <h3 class="en hidden font-english font-bold text-lg text-navy-900 dark:text-white mb-2">Best Prices</h3>
+        <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">أسعار مباشرة من المصنع مع عروض حصرية للعملاء الدائمين</p>
+        <p class="en hidden font-english text-sm text-navy-900/50 dark:text-slate-400 leading-relaxed">Factory-direct prices with exclusive offers for loyal customers</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BEST SELLERS - 3D CAROUSEL ========== -->
+<section id="products" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span class="reveal inline-block px-4 py-1.5 rounded-full bg-mint-light/60 dark:bg-mint/10 text-mint-dark dark:text-mint text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="ar">الأكثر مبيعاً</span>
+        <span class="en hidden">Best Sellers</span>
+      </span>
+      <h2 class="reveal reveal-delay-1 ar font-arabic font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        منتجات يثق بها <span class="text-gold">أطباء الأسنان</span>
+      </h2>
+      <h2 class="reveal reveal-delay-1 en hidden font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        Products <span class="text-gold">Dentists</span> Trust
+      </h2>
+    </div>
+
+    <!-- 3D Carousel -->
+    <div class="reveal reveal-delay-2 relative">
+      <div class="carousel-scene mx-auto" style="height: 420px;">
+        <div class="carousel-track" id="carousel-track">
+          <!-- Product 1 -->
+          <div class="carousel-item flex flex-col">
+            <div class="h-1/2 overflow-hidden bg-gradient-to-br from-ice to-mint-light/30 dark:from-navy-700 dark:to-navy-800">
+              <img src="https://picsum.photos/seed/whitening-device/280/180" alt="جهاز تبييض" class="w-full h-full object-cover product-img-zoom">
+            </div>
+            <div class="h-1/2 p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-gold uppercase tracking-wider">Best Seller</span>
+                <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mt-1">جهاز تبييض أسنان LED</h4>
+                <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mt-1">LED Whitening Device</h4>
+                <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">تبييض احترافي بنتائج فورية</p>
+                <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">Professional instant whitening</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-arabic font-extrabold text-lg text-gold">٤٥٠ ر.س</span>
+                <button class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold hover:text-white text-gold transition-all">
+                  <iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="carousel-item flex flex-col">
+            <div class="h-1/2 overflow-hidden bg-gradient-to-br from-ivory to-ice dark:from-navy-700 dark:to-navy-800">
+              <img src="https://picsum.photos/seed/dental-mirror-pro/280/180" alt="مرآة أسنان" class="w-full h-full object-cover product-img-zoom">
+            </div>
+            <div class="h-1/2 p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-mint-dark dark:text-mint uppercase tracking-wider">Premium</span>
+                <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mt-1">مرآة أسنان احترافية</h4>
+                <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mt-1">Pro Dental Mirror</h4>
+                <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">معدن جراحي عالي الجودة</p>
+                <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">High-quality surgical steel</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-arabic font-extrabold text-lg text-gold">٨٥ ر.س</span>
+                <button class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold hover:text-white text-gold transition-all">
+                  <iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="carousel-item flex flex-col">
+            <div class="h-1/2 overflow-hidden bg-gradient-to-br from-mint-light/50 to-ice dark:from-navy-700 dark:to-navy-800">
+              <img src="https://picsum.photos/seed/composite-filling/280/180" alt="مادة حشو" class="w-full h-full object-cover product-img-zoom">
+            </div>
+            <div class="h-1/2 p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-rosegold uppercase tracking-wider">New</span>
+                <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mt-1">مادة حشو ضوئي نانو</h4>
+                <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mt-1">Nano Light-Cure Composite</h4>
+                <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">ألوان متعددة مع تماسك فائق</p>
+                <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">Multi-shade with superior bond</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-arabic font-extrabold text-lg text-gold">٣٢٠ ر.س</span>
+                <button class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold hover:text-white text-gold transition-all">
+                  <iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 4 -->
+          <div class="carousel-item flex flex-col">
+            <div class="h-1/2 overflow-hidden bg-gradient-to-br from-ice to-ivory dark:from-navy-700 dark:to-navy-800">
+              <img src="https://picsum.photos/seed/autoclave-sterilizer/280/180" alt="جهاز تعقيم" class="w-full h-full object-cover product-img-zoom">
+            </div>
+            <div class="h-1/2 p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-gold uppercase tracking-wider">Essential</span>
+                <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mt-1">جهاز تعقيم أوتوكلاف</h4>
+                <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mt-1">Autoclave Sterilizer</h4>
+                <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">تعقيم ١٢١° و ١٣٤° بمقاس ١٨ لتر</p>
+                <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">121° & 134° sterilization, 18L</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-arabic font-extrabold text-lg text-gold">٤,٨٠٠ ر.س</span>
+                <button class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold hover:text-white text-gold transition-all">
+                  <iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 5 -->
+          <div class="carousel-item flex flex-col">
+            <div class="h-1/2 overflow-hidden bg-gradient-to-br from-mint-light/40 to-ice dark:from-navy-700 dark:to-navy-800">
+              <img src="https://picsum.photos/seed/electric-toothbrush-pro/280/180" alt="فرشاة كهربائية" class="w-full h-full object-cover product-img-zoom">
+            </div>
+            <div class="h-1/2 p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-mint-dark dark:text-mint uppercase tracking-wider">Popular</span>
+                <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mt-1">فرشاة أسنان كهربائية</h4>
+                <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mt-1">Electric Toothbrush</h4>
+                <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">٥ أوضاع تنظيف مع رؤوس بديلة</p>
+                <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">5 cleaning modes with replacement heads</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-arabic font-extrabold text-lg text-gold">٢٧٠ ر.س</span>
+                <button class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold hover:text-white text-gold transition-all">
+                  <iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 6 -->
+          <div class="carousel-item flex flex-col">
+            <div class="h-1/2 overflow-hidden bg-gradient-to-br from-ivory to-mint-light/20 dark:from-navy-700 dark:to-navy-800">
+              <img src="https://picsum.photos/seed/caries-detector/280/180" alt="كاشف تسوس" class="w-full h-full object-cover product-img-zoom">
+            </div>
+            <div class="h-1/2 p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold text-rosegold uppercase tracking-wider">Advanced</span>
+                <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mt-1">كاشف تسوس الأسنان</h4>
+                <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mt-1">Caries Detector</h4>
+                <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">تقنية LED للكشف المبكر عن التسوس</p>
+                <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">LED technology for early caries detection</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-arabic font-extrabold text-lg text-gold">١,٢٠٠ ر.س</span>
+                <button class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold hover:text-white text-gold transition-all">
+                  <iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Controls -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <button onclick="rotateCarousel(-1)" class="w-12 h-12 rounded-full border-2 border-navy-900/10 dark:border-white/10 flex items-center justify-center hover:border-gold hover:text-gold transition-all text-navy-900/50 dark:text-white/50">
+          <iconify-icon icon="ph:arrow-right-bold" width="18"></iconify-icon>
+        </button>
+        <div class="flex gap-2" id="carousel-dots"></div>
+        <button onclick="rotateCarousel(1)" class="w-12 h-12 rounded-full border-2 border-navy-900/10 dark:border-white/10 flex items-center justify-center hover:border-gold hover:text-gold transition-all text-navy-900/50 dark:text-white/50">
+          <iconify-icon icon="ph:arrow-left-bold" width="18"></iconify-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="reveal text-center mt-12">
+      <a href="#" class="btn-outline ar font-arabic text-sm inline-block">عرض جميع المنتجات</a>
+      <a href="#" class="btn-outline en hidden font-english text-sm inline-block">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CATEGORIES ========== -->
+<section id="categories" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="light:bg-ice/30 dark:bg-navy-950/50 absolute inset-0"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <span class="reveal inline-block px-4 py-1.5 rounded-full bg-rosegold/10 dark:bg-rosegold/10 text-rosegold text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="ar">تصفح حسب التخصص</span>
+        <span class="en hidden">Browse by Specialty</span>
+      </span>
+      <h2 class="reveal reveal-delay-1 ar font-arabic font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        كل ما تحتاجه في <span class="text-gold">مكان واحد</span>
+      </h2>
+      <h2 class="reveal reveal-delay-1 en hidden font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        Everything You Need in <span class="text-gold">One Place</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Category 1 -->
+      <div class="reveal reveal-delay-1 category-card group relative h-72 overflow-hidden">
+        <img src="https://picsum.photos/seed/cosmetic-whitening-cat/400/350" alt="التجميل والتبييض" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="cat-overlay absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/30 to-transparent flex flex-col justify-end p-6">
+          <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3">
+            <iconify-icon icon="ph:sparkle-fill" width="24" class="text-white"></iconify-icon>
+          </div>
+          <h3 class="ar font-arabic font-bold text-white text-lg">التجميل والتبييض</h3>
+          <h3 class="en hidden font-english font-bold text-white text-lg">Cosmetic & Whitening</h3>
+          <p class="ar font-arabic text-white/60 text-xs mt-1">٤٥ منتج</p>
+          <p class="en hidden font-english text-white/60 text-xs mt-1">45 Products</p>
+        </div>
+      </div>
+      <!-- Category 2 -->
+      <div class="reveal reveal-delay-2 category-card group relative h-72 overflow-hidden">
+        <img src="https://picsum.photos/seed/sterilization-control/400/350" alt="التعقيم" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="cat-overlay absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/30 to-transparent flex flex-col justify-end p-6">
+          <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3">
+            <iconify-icon icon="ph:shield-checkered-fill" width="24" class="text-white"></iconify-icon>
+          </div>
+          <h3 class="ar font-arabic font-bold text-white text-lg">التعقيم ومكافحة العدوى</h3>
+          <h3 class="en hidden font-english font-bold text-white text-lg">Sterilization</h3>
+          <p class="ar font-arabic text-white/60 text-xs mt-1">٦٨ منتج</p>
+          <p class="en hidden font-english text-white/60 text-xs mt-1">68 Products</p>
+        </div>
+      </div>
+      <!-- Category 3 -->
+      <div class="reveal reveal-delay-3 category-card group relative h-72 overflow-hidden">
+        <img src="https://picsum.photos/seed/restorative-materials/400/350" alt="الحشو والترميم" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="cat-overlay absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/30 to-transparent flex flex-col justify-end p-6">
+          <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3">
+            <iconify-icon icon="ph:fill-fill" width="24" class="text-white"></iconify-icon>
+          </div>
+          <h3 class="ar font-arabic font-bold text-white text-lg">الحشو والترميم</h3>
+          <h3 class="en hidden font-english font-bold text-white text-lg">Restorative</h3>
+          <p class="ar font-arabic text-white/60 text-xs mt-1">٩٢ منتج</p>
+          <p class="en hidden font-english text-white/60 text-xs mt-1">92 Products</p>
+        </div>
+      </div>
+      <!-- Category 4 -->
+      <div class="reveal reveal-delay-4 category-card group relative h-72 overflow-hidden">
+        <img src="https://picsum.photos/seed/diagnostic-tools-dental/400/350" alt="أدوات التشخيص" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <div class="cat-overlay absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/30 to-transparent flex flex-col justify-end p-6">
+          <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3">
+            <iconify-icon icon="ph:magnifying-glass-fill" width="24" class="text-white"></iconify-icon>
+          </div>
+          <h3 class="ar font-arabic font-bold text-white text-lg">أدوات التشخيص</h3>
+          <h3 class="en hidden font-english font-bold text-white text-lg">Diagnostic Tools</h3>
+          <p class="ar font-arabic text-white/60 text-xs mt-1">٥٦ منتج</p>
+          <p class="en hidden font-english text-white/60 text-xs mt-1">56 Products</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLINIC TOUR ========== -->
+<section id="clinic-tour" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span class="reveal inline-block px-4 py-1.5 rounded-full bg-ice dark:bg-navy-800 text-navy-500 dark:text-gold-light text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="ar">تجربة تفاعلية</span>
+        <span class="en hidden">Interactive Experience</span>
+      </span>
+      <h2 class="reveal reveal-delay-1 ar font-arabic font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        جولة داخل <span class="text-gold">العيادة</span>
+      </h2>
+      <h2 class="reveal reveal-delay-1 en hidden font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        Inside the <span class="text-gold">Clinic</span>
+      </h2>
+      <p class="reveal reveal-delay-2 ar font-arabic text-navy-900/50 dark:text-slate-400 mt-4 max-w-2xl mx-auto">
+        تجول في عيادتنا الافتراضية واكتشف المنتجات المناسبة لكل غرفة — كما لو كنت تكتشفها بنفسك!
+      </p>
+      <p class="reveal reveal-delay-2 en hidden font-english text-navy-900/50 dark:text-slate-400 mt-4 max-w-2xl mx-auto">
+        Tour our virtual clinic and discover the right products for each room — as if you're discovering them yourself!
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Room 1: Reception -->
+      <div class="reveal reveal-delay-1 clinic-room light:bg-white dark:bg-navy-800/50 rounded-3xl overflow-hidden shadow-sm">
+        <div class="h-40 bg-gradient-to-br from-gold/20 to-gold/5 dark:from-gold/10 dark:to-gold/5 flex items-center justify-center relative overflow-hidden">
+          <iconify-icon icon="ph:sofa-fill" width="64" class="text-gold/40"></iconify-icon>
+          <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white dark:from-navy-800/50 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white">غرفة الاستقبال</h4>
+          <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white">Reception</h4>
+          <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">مرر للاكتشاف ←</p>
+          <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">Hover to discover →</p>
+          <div class="room-products mt-3 space-y-2">
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-mint-light/40 dark:bg-mint/10">
+              <iconify-icon icon="mdi:tooth" width="14" class="text-mint-dark dark:text-mint"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">معجون أسنان عرضي</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-ice/60 dark:bg-navy-700/50">
+              <iconify-icon icon="ph:toothbrush-fill" width="14" class="text-navy-400 dark:text-gold-light"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">فرشاة هدايا للمرضى</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Room 2: Treatment -->
+      <div class="reveal reveal-delay-2 clinic-room light:bg-white dark:bg-navy-800/50 rounded-3xl overflow-hidden shadow-sm">
+        <div class="h-40 bg-gradient-to-br from-mint-light/50 to-mint-light/10 dark:from-mint/10 dark:to-mint/5 flex items-center justify-center relative overflow-hidden">
+          <iconify-icon icon="ph:chair-fill" width="64" class="text-mint-dark/30 dark:text-mint/30"></iconify-icon>
+          <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white dark:from-navy-800/50 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white">عيادة العلاج</h4>
+          <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white">Treatment Room</h4>
+          <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">مرر للاكتشاف ←</p>
+          <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">Hover to discover →</p>
+          <div class="room-products mt-3 space-y-2">
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-mint-light/40 dark:bg-mint/10">
+              <iconify-icon icon="ph:drill-fill" width="14" class="text-mint-dark dark:text-mint"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">قطع حفر متنوعة</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-ice/60 dark:bg-navy-700/50">
+              <iconify-icon icon="ph:drop-fill" width="14" class="text-navy-400 dark:text-gold-light"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">مادة تخدير محلي</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-gold/10 dark:bg-gold/5">
+              <iconify-icon icon="ph:fill-fill" width="14" class="text-gold"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">مادة حشو ضوئي</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Room 3: X-Ray -->
+      <div class="reveal reveal-delay-3 clinic-room light:bg-white dark:bg-navy-800/50 rounded-3xl overflow-hidden shadow-sm">
+        <div class="h-40 bg-gradient-to-br from-ice to-navy-50 dark:from-navy-800 dark:to-navy-900 flex items-center justify-center relative overflow-hidden">
+          <iconify-icon icon="ph:x-ray-fill" width="64" class="text-navy-300/40 dark:text-navy-500/40"></iconify-icon>
+          <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white dark:from-navy-800/50 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white">غرفة الأشعة</h4>
+          <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white">X-Ray Room</h4>
+          <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">مرر للاكتشاف ←</p>
+          <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">Hover to discover →</p>
+          <div class="room-products mt-3 space-y-2">
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-ice/60 dark:bg-navy-700/50">
+              <iconify-icon icon="ph:film-strip-fill" width="14" class="text-navy-400 dark:text-gold-light"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">أفلام أشعة بانورامية</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-mint-light/40 dark:bg-mint/10">
+              <iconify-icon icon="ph:shield-checkered-fill" width="14" class="text-mint-dark dark:text-mint"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">واقي إشعاع رصاصي</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Room 4: Sterilization -->
+      <div class="reveal reveal-delay-4 clinic-room light:bg-white dark:bg-navy-800/50 rounded-3xl overflow-hidden shadow-sm">
+        <div class="h-40 bg-gradient-to-br from-rosegold/20 to-rosegold/5 dark:from-rosegold/10 dark:to-rosegold/5 flex items-center justify-center relative overflow-hidden">
+          <iconify-icon icon="ph:thermometer-simple-fill" width="64" class="text-rosegold/40"></iconify-icon>
+          <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white dark:from-navy-800/50 to-transparent"></div>
+        </div>
+        <div class="p-5">
+          <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white">غرفة التعقيم</h4>
+          <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white">Sterilization</h4>
+          <p class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400 mt-1">مرر للاكتشاف ←</p>
+          <p class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400 mt-1">Hover to discover →</p>
+          <div class="room-products mt-3 space-y-2">
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-rosegold/10 dark:bg-rosegold/5">
+              <iconify-icon icon="ph:fire-fill" width="14" class="text-rosegold"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">أكياس تعقيم ذاتية</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-ice/60 dark:bg-navy-700/50">
+              <iconify-icon icon="ph:drop-fill" width="14" class="text-navy-400 dark:text-gold-light"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">محلول تعقيم عالي</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-xl bg-mint-light/40 dark:bg-mint/10">
+              <iconify-icon icon="ph:warning-circle-fill" width="14" class="text-mint-dark dark:text-mint"></iconify-icon>
+              <span class="ar font-arabic text-xs font-medium text-navy-900 dark:text-white">مؤشرات تعقيم</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIAL / DOCTOR'S NOTE ========== -->
+<section class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="light:bg-ice/30 dark:bg-navy-950/50 absolute inset-0"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="reveal testimonial-card light:bg-white dark:bg-navy-800/50 p-8 sm:p-12 rounded-3xl shadow-sm text-center">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <iconify-icon icon="ph:stethoscope-fill" width="28" class="text-navy-900"></iconify-icon>
+      </div>
+      <span class="ar font-arabic text-xs font-bold text-gold uppercase tracking-widest">ملاحظة الطبيب</span>
+      <span class="en hidden font-english text-xs font-bold text-gold uppercase tracking-widest">Doctor's Note</span>
+      
+      <blockquote class="ar font-arabic text-lg sm:text-xl text-navy-900/80 dark:text-slate-300 leading-relaxed mt-6 mb-8">
+        "مادة الحشو الضوئي النانو من دنتال سبلايز غيّرت طريقة عملي بالكامل. التماسك فائق، والألوان تطابق الأسنان الطبيعية بدقة مذهلة. أنصح كل طبيب بتجربتها."
+      </blockquote>
+      <blockquote class="en hidden font-english text-lg sm:text-xl text-navy-900/80 dark:text-slate-300 leading-relaxed mt-6 mb-8">
+        "The Nano Light-Cure Composite from Dental Supplies completely changed my practice. Superior bond strength, and shades match natural teeth with amazing precision. I recommend every dentist to try it."
+      </blockquote>
+      
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-12 h-12 rounded-full overflow-hidden bg-navy-100 dark:bg-navy-700">
+          <img src="https://picsum.photos/seed/doctor-avatar/48/48" alt="Doctor" class="w-full h-full object-cover">
+        </div>
+        <div class="text-right">
+          <div class="ar font-arabic font-bold text-navy-900 dark:text-white">د. أحمد الخالدي</div>
+          <div class="en hidden font-english font-bold text-navy-900 dark:text-white">Dr. Ahmed Al-Khalidi</div>
+          <div class="ar font-arabic text-xs text-navy-900/50 dark:text-slate-400">استشاري تجميل الأسنان — الرياض</div>
+          <div class="en hidden font-english text-xs text-navy-900/50 dark:text-slate-400">Cosmetic Dentist — Riyadh</div>
+        </div>
+      </div>
+      
+      <!-- Stars -->
+      <div class="flex items-center justify-center gap-1 mt-4">
+        <iconify-icon icon="ph:star-fill" width="16" class="text-gold"></iconify-icon>
+        <iconify-icon icon="ph:star-fill" width="16" class="text-gold"></iconify-icon>
+        <iconify-icon icon="ph:star-fill" width="16" class="text-gold"></iconify-icon>
+        <iconify-icon icon="ph:star-fill" width="16" class="text-gold"></iconify-icon>
+        <iconify-icon icon="ph:star-fill" width="16" class="text-gold"></iconify-icon>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT SECTION ========== -->
+<section id="contact" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span class="reveal inline-block px-4 py-1.5 rounded-full bg-gold/10 dark:bg-gold/15 text-gold text-[10px] font-bold uppercase tracking-widest mb-4">
+        <span class="ar">تواصل معنا</span>
+        <span class="en hidden">Get in Touch</span>
+      </span>
+      <h2 class="reveal reveal-delay-1 ar font-arabic font-extrabold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        نحن هنا <span class="text-gold">لمساعدتك</span>
+      </h2>
+      <h2 class="reveal reveal-delay-1 en hidden font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-navy-900 dark:text-white">
+        We're Here to <span class="text-gold">Help</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="reveal reveal-delay-1">
+        <form onsubmit="handleContactForm(event)" class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-8 shadow-sm space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="ar font-arabic text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">الاسم الكامل</label>
+              <label class="en hidden font-english text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">Full Name</label>
+              <input type="text" required class="w-full px-4 py-3 rounded-2xl light:bg-ice/50 dark:bg-navy-900/50 border light:border-navy-900/5 dark:border-navy-600/30 font-arabic text-sm text-navy-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all placeholder:text-navy-900/30 dark:placeholder:text-slate-600" placeholder="د. محمد أحمد">
+            </div>
+            <div>
+              <label class="ar font-arabic text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">رقم الجوال</label>
+              <label class="en hidden font-english text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">Phone Number</label>
+              <input type="tel" required class="w-full px-4 py-3 rounded-2xl light:bg-ice/50 dark:bg-navy-900/50 border light:border-navy-900/5 dark:border-navy-600/30 font-arabic text-sm text-navy-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all placeholder:text-navy-900/30 dark:placeholder:text-slate-600" placeholder="+966 5X XXX XXXX">
+            </div>
+          </div>
+          <div>
+            <label class="ar font-arabic text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">البريد الإلكتروني</label>
+            <label class="en hidden font-english text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">Email</label>
+            <input type="email" class="w-full px-4 py-3 rounded-2xl light:bg-ice/50 dark:bg-navy-900/50 border light:border-navy-900/5 dark:border-navy-600/30 font-english text-sm text-navy-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all placeholder:text-navy-900/30 dark:placeholder:text-slate-600" placeholder="doctor@clinic.com">
+          </div>
+          <div>
+            <label class="ar font-arabic text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">نوع الاستفسار</label>
+            <label class="en hidden font-english text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">Inquiry Type</label>
+            <select class="w-full px-4 py-3 rounded-2xl light:bg-ice/50 dark:bg-navy-900/50 border light:border-navy-900/5 dark:border-navy-600/30 font-arabic text-sm text-navy-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all">
+              <option class="ar">طلب سعر منتج</option>
+              <option class="ar">استفسار تقني</option>
+              <option class="ar">شراكة تجارية</option>
+              <option class="ar">شكوى أو اقتراح</option>
+              <option class="en hidden">Product Pricing</option>
+              <option class="en hidden">Technical Inquiry</option>
+              <option class="en hidden">Business Partnership</option>
+              <option class="en hidden">Feedback</option>
+            </select>
+          </div>
+          <div>
+            <label class="ar font-arabic text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">رسالتك</label>
+            <label class="en hidden font-english text-xs font-bold text-navy-900/70 dark:text-slate-400 mb-1.5 block">Your Message</label>
+            <textarea rows="4" class="w-full px-4 py-3 rounded-2xl light:bg-ice/50 dark:bg-navy-900/50 border light:border-navy-900/5 dark:border-navy-600/30 font-arabic text-sm text-navy-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all resize-none placeholder:text-navy-900/30 dark:placeholder:text-slate-600" placeholder="اكتب رسالتك هنا..."></textarea>
+          </div>
+          <button type="submit" class="btn-gold ar font-arabic w-full text-center">إرسال الرسالة</button>
+          <button type="submit" class="btn-gold en hidden font-english w-full text-center">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="reveal reveal-delay-2 space-y-6">
+        <div class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-6 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+            <iconify-icon icon="ph:map-pin-fill" width="22" class="text-gold"></iconify-icon>
+          </div>
+          <div>
+            <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mb-1">العنوان</h4>
+            <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mb-1">Address</h4>
+            <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400">الرياض، حي العليا، شارع الأمير محمد بن عبدالعزيز</p>
+            <p class="en hidden font-english text-sm text-navy-900/50 dark:text-slate-400">Riyadh, Olaya District, Prince Mohammed Bin Abdulaziz St.</p>
+          </div>
+        </div>
+        <div class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-6 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-mint-light/60 dark:bg-mint/10 flex items-center justify-center flex-shrink-0">
+            <iconify-icon icon="ph:phone-fill" width="22" class="text-mint-dark dark:text-mint"></iconify-icon>
+          </div>
+          <div>
+            <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mb-1">اتصل بنا</h4>
+            <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mb-1">Call Us</h4>
+            <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400" dir="ltr">+966 11 XXX XXXX</p>
+            <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400" dir="ltr">+966 5X XXX XXXX</p>
+          </div>
+        </div>
+        <div class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-6 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-ice dark:bg-navy-700 flex items-center justify-center flex-shrink-0">
+            <iconify-icon icon="ph:clock-fill" width="22" class="text-navy-500 dark:text-gold-light"></iconify-icon>
+          </div>
+          <div>
+            <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mb-1">ساعات العمل</h4>
+            <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mb-1">Working Hours</h4>
+            <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400">الأحد - الخميس: ٩ صباحاً - ٩ مساءً</p>
+            <p class="en hidden font-english text-sm text-navy-900/50 dark:text-slate-400">Sun - Thu: 9:00 AM - 9:00 PM</p>
+            <p class="ar font-arabic text-sm text-navy-900/50 dark:text-slate-400">الجمعة - السبت: ٤ عصراً - ٩ مساءً</p>
+            <p class="en hidden font-english text-sm text-navy-900/50 dark:text-slate-400">Fri - Sat: 4:00 PM - 9:00 PM</p>
+          </div>
+        </div>
+        
+        <!-- Payment Methods -->
+        <div class="light:bg-white dark:bg-navy-800/50 rounded-3xl p-6 shadow-sm">
+          <h4 class="ar font-arabic font-bold text-navy-900 dark:text-white mb-4">طرق الدفع المتاحة</h4>
+          <h4 class="en hidden font-english font-bold text-navy-900 dark:text-white mb-4">Available Payment Methods</h4>
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 rounded-full light:bg-ice dark:bg-navy-700 text-xs font-bold text-navy-900/70 dark:text-slate-300">Visa</span>
+            <span class="px-4 py-2 rounded-full light:bg-ice dark:bg-navy-700 text-xs font-bold text-navy-900/70 dark:text-slate-300">Mastercard</span>
+            <span class="px-4 py-2 rounded-full light:bg-ice dark:bg-navy-700 text-xs font-bold text-navy-900/70 dark:text-slate-300">Mada</span>
+            <span class="px-4 py-2 rounded-full light:bg-ice dark:bg-navy-700 text-xs font-bold text-navy-900/70 dark:text-slate-300">Apple Pay</span>
+            <span class="px-4 py-2 rounded-full light:bg-mint-light/60 dark:bg-mint/10 text-xs font-bold text-mint-dark dark:text-mint">الدفع عند الاستلام</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-navy-900 dark:bg-navy-950 text-white pt-16 pb-8 relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  <!-- Decorative -->
+  <div class="absolute top-20 right-10 w-64 h-64 bg-gold/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-10 left-10 w-48 h-48 bg-mint/5 rounded-full blur-3xl"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center">
+            <iconify-icon icon="mdi:tooth" width="22" class="text-navy-900"></iconify-icon>
+          </div>
+          <span class="ar font-arabic font-bold text-lg">دنتال سبلايز</span>
+          <span class="en hidden font-english font-bold text-lg">Dental Supplies</span>
+        </div>
+        <p class="ar font-arabic text-sm text-white/50 leading-relaxed mb-4">مستلزمات طب الأسنان الفاخرة من أرقى العلامات العالمية. نحن نؤمن بأن كل ابتسامة تستحق أفضل الأدوات.</p>
+        <p class="en hidden font-english text-sm text-white/50 leading-relaxed mb-4">Premium dental supplies from the world's finest brands. We believe every smile deserves the best tools.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold/20 flex items-center justify-center transition-colors">
+            <iconify-icon icon="mdi:twitter" width="16" class="text-white/60"></iconify-icon>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold/20 flex items-center justify-center transition-colors">
+            <iconify-icon icon="mdi:instagram" width="16" class="text-white/60"></iconify-icon>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold/20 flex items-center justify-center transition-colors">
+            <iconify-icon icon="mdi:linkedin" width="16" class="text-white/60"></iconify-icon>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold/20 flex items-center justify-center transition-colors">
+            <iconify-icon icon="mdi:snapchat" width="16" class="text-white/60"></iconify-icon>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Quick Links -->
+      <div>
+        <h4 class="ar font-arabic font-bold text-sm mb-4 text-gold">روابط سريعة</h4>
+        <h4 class="en hidden font-english font-bold text-sm mb-4 text-gold">Quick Links</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">المنتجات الأكثر مبيعاً</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">Best Sellers</a></li>
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">العروض الحصرية</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">Exclusive Offers</a></li>
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">سياسة الشحن والإرجاع</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">Shipping & Returns</a></li>
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">الأسئلة الشائعة</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <!-- Categories -->
+      <div>
+        <h4 class="ar font-arabic font-bold text-sm mb-4 text-gold">التصنيفات</h4>
+        <h4 class="en hidden font-english font-bold text-sm mb-4 text-gold">Categories</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">التجميل والتبييض</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">Cosmetic & Whitening</a></li>
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">التعقيم ومكافحة العدوى</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">Sterilization</a></li>
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">الحشو والترميم</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">Restorative</a></li>
+          <li><a href="#" class="ar font-arabic text-sm text-white/50 hover:text-gold transition-colors">أدوات التشخيص</a></li>
+          <li><a href="#" class="en hidden font-english text-sm text-white/50 hover:text-gold transition-colors">Diagnostic Tools</a></li>
+        </ul>
+      </div>
+      
+      <!-- Newsletter -->
+      <div>
+        <h4 class="ar font-arabic font-bold text-sm mb-4 text-gold">النشرة البريدية</h4>
+        <h4 class="en hidden font-english font-bold text-sm mb-4 text-gold">Newsletter</h4>
+        <p class="ar font-arabic text-sm text-white/50 mb-4">اشترك ليصلك كل جديد وعروضنا الحصرية</p>
+        <p class="en hidden font-english text-sm text-white/50 mb-4">Subscribe for updates and exclusive offers</p>
+        <form onsubmit="handleNewsletter(event)" class="flex gap-2">
+          <input type="email" required class="flex-1 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all" placeholder="بريدك الإلكتروني">
+          <button type="submit" class="w-10 h-10 rounded-full bg-gold flex items-center justify-center hover:bg-gold-light transition-colors flex-shrink-0">
+            <iconify-icon icon="ph:paper-plane-tilt-fill" width="16" class="text-navy-900"></iconify-icon>
+          </button>
+        </form>
+        
+        <!-- Certifications -->
+        <div class="mt-6 flex items-center gap-3">
+          <div class="px-3 py-1.5 rounded-lg bg-white/5 text-[10px] font-bold text-white/40">FDA</div>
+          <div class="px-3 py-1.5 rounded-lg bg-white/5 text-[10px] font-bold text-white/40">CE</div>
+          <div class="px-3 py-1.5 rounded-lg bg-white/5 text-[10px] font-bold text-white/40">ISO 13485</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom -->
+    <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="ar font-arabic text-xs text-white/30">© ٢٠٢٥ دنتال سبلايز. جميع الحقوق محفوظة.</p>
+      <p class="en hidden font-english text-xs text-white/30">© 2025 Dental Supplies. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="ar font-arabic text-xs text-white/30 hover:text-gold transition-colors">سياسة الخصوصية</a>
+        <a href="#" class="en hidden font-english text-xs text-white/30 hover:text-gold transition-colors">Privacy Policy</a>
+        <a href="#" class="ar font-arabic text-xs text-white/30 hover:text-gold transition-colors">الشروط والأحكام</a>
+        <a href="#" class="en hidden font-english text-xs text-white/30 hover:text-gold transition-colors">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== WHATSAPP FLOAT ========== -->
+<a href="https://wa.me/966500000000" target="_blank" class="whatsapp-float" title="تواصل عبر واتساب">
+  <iconify-icon icon="mdi:whatsapp" width="28" class="text-white"></iconify-icon>
+</a>
+
+<!-- ========== CHATBOT ========== -->
+<div class="chatbot-container" id="chatbot">
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-navy-900 to-navy-800 p-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+        <iconify-icon icon="mdi:tooth" width="20" class="text-gold"></iconify-icon>
+      </div>
+      <div>
+        <div class="ar font-arabic font-bold text-white text-sm">مساعد دنتال سبلايز</div>
+        <div class="en hidden font-english font-bold text-white text-sm">Dental Assistant</div>
+        <div class="flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-green-400"></span>
+          <span class="ar font-arabic text-[10px] text-white/50">متصل الآن</span>
+          <span class="en hidden font-english text-[10px] text-white/50">Online</span>
+        </div>
+      </div>
+    </div>
+    <button onclick="toggleChatbot()" class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors">
+      <iconify-icon icon="ph:x-bold" width="14" class="text-white/60"></iconify-icon>
+    </button>
+  </div>
+  
+  <!-- Messages -->
+  <div class="p-4 space-y-3 overflow-y-auto" style="max-height: 320px;" id="chat-messages">
+    <div class="flex gap-2">
+      <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+        <iconify-icon icon="mdi:tooth" width="14" class="text-gold"></iconify-icon>
+      </div>
+      <div class="light:bg-ice dark:bg-navy-700 rounded-2xl rounded-tr-md px-4 py-2.5 max-w-[80%]">
+        <p class="ar font-arabic text-sm text-navy-900/80 dark:text-slate-300">مرحباً بك! 😊 أنا مساعد دنتال سبلايز الذكي. كيف يمكنني مساعدتك؟</p>
+        <p class="en hidden font-english text-sm text-navy-900/80 dark:text-slate-300">Welcome! 😊 I'm Dental Supplies' smart assistant. How can I help you?</p>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+        <iconify-icon icon="mdi:tooth" width="14" class="text-gold"></iconify-icon>
+      </div>
+      <div class="light:bg-ice dark:bg-navy-700 rounded-2xl rounded-tr-md px-4 py-2.5 max-w-[80%]">
+        <p class="ar font-arabic text-sm text-navy-900/80 dark:text-slate-300">هل أنت طبيب أسنان أم مريض؟</p>
+        <p class="en hidden font-english text-sm text-navy-900/80 dark:text-slate-300">Are you a dentist or a patient?</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Quick Actions -->
+  <div class="p-4 border-t light:border-navy-900/5 dark:border-navy-600/30" id="chat-actions">
+    <div class="flex flex-wrap gap-2">
+      <button onclick="chatReply('doctor')" class="ar px-4 py-2 rounded-full text-xs font-bold border-2 border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">👨‍⚕️ أنا طبيب</button>
+      <button onclick="chatReply('patient')" class="ar px-4 py-2 rounded-full text-xs font-bold border-2 border-mint-dark/30 text-mint-dark dark:text-mint dark:border-mint/30 hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">😊 أنا مريض</button>
+      <button onclick="chatReply('doctor')" class="en hidden px-4 py-2 rounded-full text-xs font-bold border-2 border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">👨‍⚕️ I'm a Dentist</button>
+      <button onclick="chatReply('patient')" class="en hidden px-4 py-2 rounded-full text-xs font-bold border-2 border-mint-dark/30 text-mint-dark dark:text-mint dark:border-mint/30 hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">😊 I'm a Patient</button>
+    </div>
+  </div>
+</div>
+
+<!-- Chatbot Toggle Button -->
+<button onclick="toggleChatbot()" id="chatbot-toggle" class="fixed bottom-28 left-6 z-99 w-14 h-14 rounded-full bg-navy-900 dark:bg-gold shadow-xl flex items-center justify-center hover:scale-110 transition-transform z-[98]" style="z-index:98">
+  <iconify-icon icon="ph:chat-circle-text-fill" width="24" class="text-gold dark:text-navy-900"></iconify-icon>
+  <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center">1</span>
+</button>
+<!-- Fix RTL position -->
+<style>
+[dir="rtl"] #chatbot-toggle { left: auto; right: 24px; }
+</style>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+// ===== SMILE PARTICLE ANIMATION =====
+(function() {
+  const canvas = document.getElementById('smile-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 300, H = 300, cx = W/2, cy = H/2;
+  let particles = [];
+  let startTime = Date.now();
+  let done = false;
+
+  // Generate smiley face points
+  function generateFacePoints() {
+    const points = [];
+    // Face circle - 80 points
+    for (let i = 0; i < 80; i++) {
+      const angle = (i / 80) * Math.PI * 2;
+      points.push({ x: cx + Math.cos(angle) * 90, y: cy + Math.sin(angle) * 90 - 10 });
+    }
+    // Left eye - 12 points
+    for (let i = 0; i < 12; i++) {
+      const angle = (i / 12) * Math.PI * 2;
+      points.push({ x: cx - 30 + Math.cos(angle) * 12, y: cy - 25 + Math.sin(angle) * 12 });
+    }
+    // Right eye - 12 points
+    for (let i = 0; i < 12; i++) {
+      const angle = (i / 12) * Math.PI * 2;
+      points.push({ x: cx + 30 + Math.cos(angle) * 12, y: cy - 25 + Math.sin(angle) * 12 });
+    }
+    // Smile arc - 60 points
+    for (let i = 0; i < 60; i++) {
+      const t = i / 59;
+      const angle = Math.PI * 0.15 + t * Math.PI * 0.7;
+      points.push({ x: cx + Math.cos(angle) * 55, y: cy + 15 + Math.sin(angle) * 55 });
+    }
+    return points;
+  }
+
+  const targets = generateFacePoints();
+  particles = targets.map(t => ({
+    x: Math.random() * W, y: Math.random() * H,
+    tx: t.x, ty: t.y,
+    size: 1.5 + Math.random() * 1.5,
+    color: Math.random() > 0.5 ? '#C9A96E' : (Math.random() > 0.5 ? '#A8DAB5' : '#D4A5A5'),
+    vx: 0, vy: 0
+  }));
+
+  function animate() {
+    if (done) return;
+    const elapsed = (Date.now() - startTime) / 1000;
+    ctx.clearRect(0, 0, W, H);
+
+    let alpha = 1;
+    if (elapsed > 2.5) alpha = Math.max(0, 1 - (elapsed - 2.5) / 0.8);
+    if (elapsed > 3.3) { done = true; document.getElementById('smile-loader').classList.add('hidden'); return; }
+
+    particles.forEach(p => {
+      if (elapsed < 1.5) {
+        // Move to target
+        const ease = Math.min(1, elapsed / 1.2);
+        const easeOut = 1 - Math.pow(1 - ease, 3);
+        p.x = p.x + (p.tx - p.x) * 0.08;
+        p.y = p.y + (p.ty - p.y) * 0.08;
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = alpha;
+      ctx.fill();
+    });
+
+    // Add glow in the middle phase
+    if (elapsed > 1.5 && elapsed < 2.5) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, 100, 0, Math.PI * 2);
+      const grd = ctx.createRadialGradient(cx, cy, 30, cx, cy, 100);
+      grd.addColorStop(0, 'rgba(201,169,110,' + (0.15 * alpha) + ')');
+      grd.addColorStop(1, 'rgba(201,169,110,0)');
+      ctx.fillStyle = grd;
+      ctx.globalAlpha = 1;
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ===== HEADER SCROLL =====
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// ===== DARK MODE =====
+function toggleDark() {
+  const html = document.documentElement;
+  const body = document.body;
+  if (body.classList.contains('dark')) {
+    body.classList.remove('dark');
+    body.classList.add('light');
+    html.classList.remove('dark');
+    html.classList.add('light');
+    showToast('الوضع النهاري مفعّل ☀️', 'Light mode enabled ☀️');
+  } else {
+    body.classList.remove('light');
+    body.classList.add('dark');
+    html.classList.remove('light');
+    html.classList.add('dark');
+    showToast('الوضع الليلي مفعّل 🌙', 'Dark mode enabled 🌙');
+  }
+}
+
+// ===== LANGUAGE TOGGLE =====
+let currentLang = 'ar';
+function toggleLang() {
+  const html = document.documentElement;
+  const arElements = document.querySelectorAll('.ar');
+  const enElements = document.querySelectorAll('.en');
+  
+  if (currentLang === 'ar') {
+    currentLang = 'en';
+    html.setAttribute('lang', 'en');
+    html.setAttribute('dir', 'ltr');
+    arElements.forEach(el => el.classList.add('hidden'));
+    enElements.forEach(el => el.classList.remove('hidden'));
+    document.body.style.fontFamily = "'Inter', sans-serif";
+    showToast('English mode enabled 🇬🇧', 'English mode enabled 🇬🇧');
+  } else {
+    currentLang = 'ar';
+    html.setAttribute('lang', 'ar');
+    html.setAttribute('dir', 'rtl');
+    arElements.forEach(el => el.classList.remove('hidden'));
+    enElements.forEach(el => el.classList.add('hidden'));
+    document.body.style.fontFamily = "'Tajawal', 'Inter', sans-serif";
+    showToast('الوضع العربي مفعّل 🇸🇦', 'Arabic mode enabled 🇸🇦');
+  }
+}
+
+// ===== MOBILE MENU =====
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+  menu.classList.toggle('open');
+  if (menu.classList.contains('open')) {
+    icon.setAttribute('icon', 'ph:x-bold');
+  } else {
+    icon.setAttribute('icon', 'ph:list-bold');
+  }
+}
+
+// ===== TOAST =====
+function showToast(arMsg, enMsg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = currentLang === 'ar' ? arMsg : enMsg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ===== 3D CAROUSEL =====
+let carouselAngle = 0;
+const carouselTrack = document.getElementById('carousel-track');
+const items = carouselTrack.children;
+const itemCount = items.length;
+const angleStep = 360 / itemCount;
+const radius = 380;
+
+// Position items
+function updateCarousel() {
+  for (let i = 0; i < itemCount; i++) {
+    const angle = carouselAngle + i * angleStep;
+    const rad = (angle * Math.PI) / 180;
+    const x = Math.sin(rad) * radius;
+    const z = Math.cos(rad) * radius - radius;
+    const scale = Math.max(0.5, (z + radius) / (radius * 2) * 0.5 + 0.5);
+    const opacity = Math.max(0.3, (z + radius) / (radius * 2));
+    
+    items[i].style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
+    items[i].style.opacity = opacity;
+    items[i].style.zIndex = Math.round(scale * 100);
+  }
+}
+
+function rotateCarousel(dir) {
+  carouselAngle += dir * angleStep;
+  updateCarousel();
+}
+
+// Auto rotate
+let autoRotate = setInterval(() => { carouselAngle -= angleStep; updateCarousel(); }, 4000);
+const carouselScene = document.querySelector('.carousel-scene');
+carouselScene.addEventListener('mouseenter', () => clearInterval(autoRotate));
+carouselScene.addEventListener('mouseleave', () => {
+  autoRotate = setInterval(() => { carouselAngle -= angleStep; updateCarousel(); }, 4000);
+});
+
+// Touch/swipe support
+let touchStartX = 0;
+carouselScene.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; clearInterval(autoRotate); });
+carouselScene.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) rotateCarousel(diff > 0 ? 1 : -1);
+  autoRotate = setInterval(() => { carouselAngle -= angleStep; updateCarousel(); }, 4000);
+});
+
+updateCarousel();
+
+// Carousel dots
+const dotsContainer = document.getElementById('carousel-dots');
+for (let i = 0; i < itemCount; i++) {
+  const dot = document.createElement('button');
+  dot.className = 'w-2 h-2 rounded-full transition-all';
+  dot.style.background = i === 0 ? '#C9A96E' : 'rgba(11,26,46,0.15)';
+  dot.onclick = () => { carouselAngle = -i * angleStep; updateCarousel(); updateDots(i); };
+  dotsContainer.appendChild(dot);
+}
+function updateDots(activeIndex) {
+  const dots = dotsContainer.children;
+  const normalizedAngle = (((-carouselAngle % 360) + 360) % 360);
+  const idx = Math.round(normalizedAngle / angleStep) % itemCount;
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].style.background = i === idx ? '#C9A96E' : 'rgba(11,26,46,0.15)';
+    dots[i].style.width = i === idx ? '20px' : '8px';
+  }
+}
+// Update dots on rotation
+const origUpdate = updateCarousel;
+updateCarousel = function() {
+  origUpdate();
+  updateDots();
+};
+
+// ===== CHATBOT =====
+function toggleChatbot() {
+  const chatbot = document.getElementById('chatbot');
+  const toggle = document.getElementById('chatbot-toggle');
+  chatbot.classList.toggle('open');
+  if (chatbot.classList.contains('open')) {
+    toggle.style.display = 'none';
+    // Remove notification badge
+    const badge = toggle.querySelector('span');
+    if (badge) badge.remove();
+  } else {
+    toggle.style.display = 'flex';
+  }
+}
+
+function chatReply(type) {
+  const messagesDiv = document.getElementById('chat-messages');
+  const actionsDiv = document.getElementById('chat-actions');
+  
+  // Add user message
+  let userText = '';
+  let botText = '';
+  let botOptions = '';
+  
+  if (type === 'doctor') {
+    userText = currentLang === 'ar' ? '👨‍⚕️ أنا طبيب أسنان' : '👨‍⚕️ I\'m a dentist';
+    botText = currentLang === 'ar' 
+      ? 'أهلاً دكتور! يمكنني مساعدتك في:\n• طلب مستلزمات العيادة\n• الاستفسار عن منتجات محددة\n• عروض الأسعار الجملة\n• الدعم الفني'
+      : 'Welcome Doctor! I can help with:\n• Clinic supplies orders\n• Specific product inquiries\n• Wholesale pricing\n• Technical support';
+    botOptions = currentLang === 'ar'
+      ? `<button onclick="chatOption('catalog')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">📋 كتالوج المنتجات</button>
+         <button onclick="chatOption('wholesale')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">💰 أسعار الجملة</button>
+         <button onclick="chatOption('support')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">🔧 دعم فني</button>`
+      : `<button onclick="chatOption('catalog')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">📋 Product Catalog</button>
+         <button onclick="chatOption('wholesale')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">💰 Wholesale Prices</button>
+         <button onclick="chatOption('support')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-gold/30 text-gold hover:bg-gold hover:text-navy-900 transition-all">🔧 Tech Support</button>`;
+  } else {
+    userText = currentLang === 'ar' ? '😊 أنا مريض' : '😊 I\'m a patient';
+    botText = currentLang === 'ar'
+      ? 'مرحباً! نحن نساعد المرضى في:\n• منتجات العناية بالفم المنزلية\n• أجهزة تبييض الأسنان المنزلية\n• نصائح للعناية بالأسنان'
+      : 'Hello! We help patients with:\n• Home oral care products\n• At-home teeth whitening\n• Dental care tips';
+    botOptions = currentLang === 'ar'
+      ? `<button onclick="chatOption('whitening')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-mint-dark/30 text-mint-dark dark:text-mint hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">✨ منتجات التبييض</button>
+         <button onclick="chatOption('care')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-mint-dark/30 text-mint-dark dark:text-mint hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">🪥 العناية بالفم</button>
+         <button onclick="chatOption('tips')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-mint-dark/30 text-mint-dark dark:text-mint hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">💡 نصائح</button>`
+      : `<button onclick="chatOption('whitening')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-mint-dark/30 text-mint-dark dark:text-mint hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">✨ Whitening</button>
+         <button onclick="chatOption('care')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-mint-dark/30 text-mint-dark dark:text-mint hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">🪥 Oral Care</button>
+         <button onclick="chatOption('tips')" class="px-3 py-1.5 rounded-full text-[11px] font-bold border border-mint-dark/30 text-mint-dark dark:text-mint hover:bg-mint-dark hover:text-white dark:hover:bg-mint dark:hover:text-navy-900 transition-all">💡 Tips</button>`;
+  }
+
+  // User bubble
+  const userBubble = document.createElement('div');
+  userBubble.className = 'flex justify-end';
+  userBubble.innerHTML = `<div class="bg-gold/20 dark:bg-gold/10 rounded-2xl rounded-tl-md px-4 py-2.5 max-w-[80%]">
+    <p class="text-sm text-navy-900 dark:text-white font-medium">${userText}</p>
+  </div>`;
+  messagesDiv.appendChild(userBubble);
+
+  // Bot bubble (delayed)
+  setTimeout(() => {
+    const botBubble = document.createElement('div');
+    botBubble.className = 'flex gap-2';
+    botBubble.innerHTML = `<div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+      <iconify-icon icon="mdi:tooth" width="14" class="text-gold"></iconify-icon>
+    </div>
+    <div class="light:bg-ice dark:bg-navy-700 rounded-2xl rounded-tr-md px-4 py-2.5 max-w-[80%]">
+      <p class="text-sm text-navy-900/80 dark:text-slate-300 whitespace-pre-line">${botText}</p>
+    </div>`;
+    messagesDiv.appendChild(botBubble);
+    
+    // Update actions
+    actionsDiv.innerHTML = `<div class="flex flex-wrap gap-2">${botOptions}</div>`;
+    
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }, 800);
+
+  actionsDiv.innerHTML = '';
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function chatOption(type) {
+  const messagesDiv = document.getElementById('chat-messages');
+  const actionsDiv = document.getElementById('chat-actions');
+  
+  const responses = {
+    catalog: { ar: '📋 سأحولك لصفحة المنتجات الآن! يمكنك أيضاً طلب الكتالوج PDF كاملاً عبر الواتساب.', en: '📋 Redirecting you to products! You can also request the full PDF catalog via WhatsApp.' },
+    wholesale: { ar: '💰 أسعار الجملة متاحة للأطباء والعيادات. يرجى إرسال رقم الترخيص الطبي عبر الواتساب لتفعيل حساب الجملة.', en: '💰 Wholesale prices available for doctors and clinics. Please send your medical license via WhatsApp to activate your wholesale account.' },
+    support: { ar: '🔧 فريق الدعم الفني متاح من الساعة ٩ صباحاً حتى ٩ مساءً. يمكنك أيضاً حجز موعد استشارة مجانية.', en: '🔧 Technical support available 9 AM - 9 PM. You can also book a free consultation.' },
+    whitening: { ar: '✨ لدينا أقوى أجهزة تبييض LED للمنزل بنتائج تبييض تصل إلى ٨ درجات! طلبك يوصلك خلال ٢٤ ساعة.', en: '✨ We have the strongest at-home LED whitening devices with up to 8 shades brighter! Delivered within 24 hours.' },
+    care: { ar: '🪥 فرشاتنا الكهربائية تأتي مع ٥ أوضاع تنظيم ورؤوس بديلة لمدة ٣ أشهر. مثالية للعناية اليومية!', en: '🪥 Our electric toothbrushes come with 5 cleaning modes and 3-month replacement heads. Perfect for daily care!' },
+    tips: { ar: '💡 نصيحة ذهبية: استخدم خيط الأسنان يومياً قبل الفرشاة، وزر طبيبك كل ٦ أشهر للكشف الدوري! ✨', en: '💡 Golden tip: Use dental floss daily before brushing, and visit your dentist every 6 months for checkups! ✨' }
+  };
+
+  const resp = responses[type] || responses.catalog;
+  const userLabels = {
+    catalog: { ar: '📋 كتالوج المنتجات', en: '📋 Product Catalog' },
+    wholesale: { ar: '💰 أسعار الجملة', en: '💰 Wholesale Prices' },
+    support: { ar: '🔧 دعم فني', en: '🔧 Tech Support' },
+    whitening: { ar: '✨ منتجات التبييض', en: '✨ Whitening Products' },
+    care: { ar: '🪥 العناية بالفم', en: '🪥 Oral Care' },
+    tips: { ar: '💡 نصائح', en: '💡 Tips' }
+  };
+  const label = userLabels[type] || userLabels.catalog;
+
+  const userBubble = document.createElement('div');
+  userBubble.className = 'flex justify-end';
+  userBubble.innerHTML = `<div class="bg-gold/20 dark:bg-gold/10 rounded-2xl rounded-tl-md px-4 py-2.5 max-w-[80%]">
+    <p class="text-sm text-navy-900 dark:text-white font-medium">${currentLang === 'ar' ? label.ar : label.en}</p>
+  </div>`;
+  messagesDiv.appendChild(userBubble);
+
+  setTimeout(() => {
+    const botBubble = document.createElement('div');
+    botBubble.className = 'flex gap-2';
+    botBubble.innerHTML = `<div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+      <iconify-icon icon="mdi:tooth" width="14" class="text-gold"></iconify-icon>
+    </div>
+    <div class="light:bg-ice dark:bg-navy-700 rounded-2xl rounded-tr-md px-4 py-2.5 max-w-[80%]">
+      <p class="text-sm text-navy-900/80 dark:text-slate-300">${currentLang === 'ar' ? resp.ar : resp.en}</p>
+    </div>`;
+    messagesDiv.appendChild(botBubble);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }, 600);
+
+  actionsDiv.innerHTML = '';
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// ===== SCROLL REVEAL =====
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// ===== COUNTER ANIMATION =====
+const counters = document.querySelectorAll('[data-count]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = parseInt(entry.target.getAttribute('data-count'));
+      let current = 0;
+      const increment = target / 60;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        entry.target.textContent = Math.floor(current).toLocaleString('ar-SA') + '+';
+      }, 25);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// ===== FORM HANDLERS =====
+function handleContactForm(e) {
+  e.preventDefault();
+  showToast(currentLang === 'ar' ? '✅ تم إرسال رسالتك بنجاح!' : '✅ Message sent successfully!');
+  e.target.reset();
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  showToast(currentLang === 'ar' ? '✅ تم الاشتراك في النشرة البريدية!' : '✅ Subscribed to newsletter!');
+  e.target.reset();
+}
+
+// ===== PRODUCT ADD TO CART =====
+document.querySelectorAll('.carousel-item button').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const cartBadge = document.querySelector('header .absolute.-top-0\\.5');
+    if (cartBadge) {
+      const current = parseInt(cartBadge.textContent);
+      cartBadge.textContent = current + 1;
+    }
+    showToast(currentLang === 'ar' ? '🛒 تمت إضافة المنتج للسلة!' : '🛒 Product added to cart!');
+    this.style.background = '#C9A96E';
+    this.style.color = '#0B1A2E';
+    this.innerHTML = '<iconify-icon icon="ph:check-bold" width="14"></iconify-icon>';
+    setTimeout(() => {
+      this.style.background = '';
+      this.style.color = '';
+      this.innerHTML = '<iconify-icon icon="ph:plus-bold" width="14"></iconify-icon>';
+    }, 1500);
+  });
+});
+
+// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
